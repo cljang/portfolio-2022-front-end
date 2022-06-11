@@ -1,0 +1,128 @@
+@use "../global/variables" as *;
+
+header {
+  z-index: 2;
+
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  
+    & > * {
+      padding: 0.5rem 1rem;
+    }
+  
+    // Logo
+    &-logo {
+      display: inline-block;
+      
+      a {
+        display: block;
+        padding: 0.5rem;
+
+        .site-logo {
+          width: 3rem;
+  
+          @media (min-width: $bp-laptop) {
+            width: 5rem;
+          }
+        }
+      }
+    }
+  
+    // Hamburger Menu
+    &-btn {
+      background: none;
+      border: none;
+      position: relative;
+      display: block;
+  
+      .bar {
+        display: block;
+        position: relative;
+        top: 0;
+        margin: 0.5rem 0;
+        width: 2rem;
+        height: 0.25rem;
+        border-radius: 0.25rem;
+        background-color: $white;
+        transition: top 0.3s ease-in-out, transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-color 0.2s ease-in-out
+      }
+  
+      &:hover .bar {
+        background-color: $yellow;
+      }
+  
+      &.navbar-toggled {
+        #bar-1 {
+          top: 0.75rem;
+          transform: rotateZ(-45deg);
+        }
+  
+        #bar-2 {
+          opacity: 0;
+        }
+  
+        #bar-3 {
+          top: -0.75rem;
+          transform: rotateZ(45deg);
+        }
+      }
+    }
+  }
+    
+  // Nav Menu
+  .navbar-menu {
+    background-color: $background__grey-dark;
+    padding: 0;
+    position: fixed;
+    inset: 0;
+    left: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: -1;
+    transition: left 0.5s ease-in-out;
+
+    ul {
+      list-style: none;
+      color: $white;
+      padding: 0;
+      text-align: center;
+
+      a {
+        display: block;
+        color: $white;
+        font-family: $heading-font;
+        font-size: 2rem;
+        font-weight: 700;
+        text-decoration: none;
+        padding: 1rem;
+        opacity: 0;
+        transition: background-color 0.2s ease-in-out, opacity 0.3s ease-in-out;
+  
+        &:hover {
+          background-color: $yellow;
+        }
+      }
+    }
+
+
+    &.navbar-toggled {
+      // Set to a number bigger than the height of the content
+      left: 0;
+
+      ul {
+        a {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

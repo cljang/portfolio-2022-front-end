@@ -1,0 +1,12 @@
+@use "../global/variables" as *;
+
+.page {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
+  margin-top: 4.5rem;
+
+  @media (min-width: $bp-laptop) {
+    margin-top: 5.5rem;
+  }
+}

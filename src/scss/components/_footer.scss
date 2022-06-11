@@ -1,0 +1,72 @@
+@use "../global/variables" as *;
+
+footer {
+  background-color: $background__grey-dark;
+  font-size: 1rem;
+  z-index: 1;
+
+  section {
+    padding: unset;
+  }
+
+  .footer-content {
+    max-width: 30rem;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 2rem;
+
+    & > * {
+      width: 100%;
+    }
+
+    a {
+      color: $white;
+      text-decoration: none;
+
+      &:hover {
+        color: $yellow;
+      }
+
+      svg {
+        display: block;
+      }
+    }
+    
+    .brand {
+      .logo {
+        text-align: center;
+        font-size: 2rem;
+        
+
+        .site-logo {
+          width: 5rem;
+          margin: 0 auto 2rem;
+        }
+      }
+
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        font-size: 1.5rem;
+
+        a {
+          display: block;
+          padding: 1rem;
+        }
+
+        svg {
+          display: block;
+        }
+      }
+    }
+
+    .copyright {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
