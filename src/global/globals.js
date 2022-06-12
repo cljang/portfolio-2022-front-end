@@ -11,14 +11,14 @@ export const navMainLinks = [
   },
   {
     name: "Work",
-    path: "/"
+    path: "/#work"
   },
   {
     name: "About",
-    path: "/"
+    path: "/#about"
   },
   {
     name: "Contact",
-    path: "/"
+    path: "/#contact"
   },
 ]
