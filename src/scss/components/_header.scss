@@ -4,6 +4,10 @@ header {
   z-index: 2;
 
   .navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

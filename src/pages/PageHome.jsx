@@ -14,7 +14,7 @@ const PageHome = () => {
 
   return (
     <section className="page page-home">
-      <h2>Home</h2>
+      <h1>Home</h1>
     </section>
   );
 
