@@ -4,6 +4,7 @@ import { appTitle, apiPath_projects } from "../global/globals";
 import { FaGithub } from "react-icons/fa";
 import { BsGlobe } from "react-icons/bs"
 import Loading from "../components/Loading";
+import ProjectFeature from "../components/ProjectFeature";
 
 const PageProject = () => {
   const { project_slug } = useParams();
@@ -24,7 +25,6 @@ const PageProject = () => {
   useEffect(() => {
     const fetchData = async () => {
         const response = await fetch(restPath)
-        console.log(response);
         if ( response.ok ) {
           const data = await response.json()
 
@@ -65,6 +65,11 @@ const PageProject = () => {
                 <span>GitHub Repository</span>
               </a>}
             </div>}
+            <section className="project-features-section">
+              {restData.acf.project_features && restData.acf.project_features.map((featureObj,id) => {
+                return <ProjectFeature key={id} featureObj={featureObj}/>
+              })}
+            </section>
             
           </>
         :
