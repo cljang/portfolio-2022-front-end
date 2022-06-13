@@ -1,0 +1,28 @@
+@use "../global/variables" as *;
+
+.page-project {
+
+
+  .project-features-section {
+    @media (min-width: $bp-laptop) {
+      display: grid;
+      grid-template-columns: 3fr 4fr 3fr;
+    }
+    
+    .project-feature {
+      margin-bottom: 6rem;
+    }
+
+    .align-left {
+      grid-column: 1/3;
+    }
+
+    .align-right {
+      grid-column: 2/4;
+    }
+
+    .project-feature-content {
+      margin-bottom: 2rem;
+    }
+  }
+}

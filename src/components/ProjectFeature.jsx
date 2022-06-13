@@ -1,6 +1,5 @@
 
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
-// import { duotoneSea as codeTheme } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import codeTheme  from '../global/codeTheme';
 
 function ProjectFeature({featureObj, className}) {
@@ -18,7 +17,31 @@ function ProjectFeature({featureObj, className}) {
         
         case "image_content":
           return (
-            <img className="image-content" src={featureContentObj.image.url} alt={featureContentObj.image.alt} />
+            <picture className="image-content">
+              {featureContentObj.image_sources && featureContentObj.image_sources.map((image, id) => {
+                // For the final image in image_sources array, output an img tag, otherwise, output a source tag
+                if (id + 1 === featureContentObj.image_sources.length) {
+                  return (
+                    <img 
+                      key={id}
+                      src={image.url} 
+                      alt={featureContentObj.alt} 
+                      loading="lazy" 
+                    />
+                  )
+                } else {
+                  let nextImage = featureContentObj.image_sources[id + 1];
+                  return (
+                    <source 
+                      key={id}
+                      media={`(min-width: ${nextImage.width}px)`} 
+                      srcSet={image.url} 
+                      type={image.mime_type} 
+                    />
+                  )
+                }
+              })}
+            </picture>
           );
 
         case "code_content":

@@ -47,7 +47,7 @@ const PageProject = () => {
 
   return (
     <>
-      <section className="page page-about">
+      <section className="page page-project">
         {isLoaded ? 
           <>
             {restData.acf.project_year && <p>{restData.acf.project_year}</p>}
@@ -67,7 +67,7 @@ const PageProject = () => {
             </div>}
             <section className="project-features-section">
               {restData.acf.project_features && restData.acf.project_features.map((featureObj,id) => {
-                return <ProjectFeature key={id} featureObj={featureObj}/>
+                return <ProjectFeature key={id} featureObj={featureObj} className={id%2 === 0 ? "align-left" : "align-right"} />
               })}
             </section>
             
