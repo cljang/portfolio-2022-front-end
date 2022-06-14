@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { appTitle, apiPath_projects } from "../global/globals";
+import { appTitle, apiPath_projects, apiPath_pages } from "../global/globals";
 import Paragraph from "../components/Paragraph";
 import Loading from "../components/Loading";
 
 const PageHome = () => {
 
-  const homePagePath = `${apiPath_projects}`
+  const homePagePath = `${apiPath_pages}?slug=home`
   const [homePageData, setHomePageData] = useState([])
   const [isHomePageLoaded, setHomePageLoadStatus] = useState(false)
 
@@ -22,17 +22,35 @@ const PageHome = () => {
     window.scrollTo(0, 0); 
   }, [])
 
+  // Load Home Page Data
   useEffect(() => {
     const fetchData = async () => {
-        const response = await fetch(projectsPath)
-        if ( response.ok ) {
-          const data = await response.json()
-          setProjectsData(data)
-          setProjectLoadStatus(true)
+      const response = await fetch(homePagePath)
+      if ( response.ok ) {
+        const data = await response.json()
+        setHomePageData(data[0])
+        setHomePageLoadStatus(true)
 
-        } else {
-          setProjectLoadStatus(false)
-        }
+      } else {
+        setHomePageLoadStatus(false)
+      }
+    }
+    fetchData()
+    
+  }, [homePagePath])
+
+  // Load Project Data
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(projectsPath)
+      if ( response.ok ) {
+        const data = await response.json()
+        setProjectsData(data)
+        setProjectLoadStatus(true)
+
+      } else {
+        setProjectLoadStatus(false)
+      }
     }
     fetchData()
     
@@ -40,13 +58,20 @@ const PageHome = () => {
 
   return (
     <section className="page page-home">
-      {isProjectLoaded ? 
+      {(isHomePageLoaded && isProjectLoaded) ? 
         <>
-          <h1>Home</h1>
-          <section id="work">
-            {projectsData.map((project,id) => {
+          <section className="section-banner">
+            <div className="banner-text">
+              <h1>{homePageData.title.rendered}</h1>
+              <p>{homePageData.acf.page_subtitle}</p>
+            </div>
+          </section>
+          <section id="work" className="section-work">
+            <h2 className="screen-reader-text">Work</h2>
+            {homePageData.acf.featured_projects.map((project_id) => {
+              const project = projectsData.find((project) => project.id === project_id);
               return (
-                <article key={id}>
+                <article key={project.id}>
                   <h3>{project.title.rendered}</h3>
                   <p>{project.acf.project_subtitle}</p>
                   <Paragraph text={project.acf.project_overview}/>
@@ -54,6 +79,30 @@ const PageHome = () => {
                 </article>
               )
             })}
+          </section>
+          <section id="about" className="section-about">
+            <h2 className="screen-reader-text">About</h2>
+            <p className="highlighted-overview">{homePageData.acf.about.highlighted_overview}</p>
+            <Paragraph text={homePageData.acf.about.overview} />
+          </section>
+          <section className="section-skills">
+            <h2>{homePageData.acf.skills.heading}</h2>
+            {homePageData.acf.skills.skill_categories && homePageData.acf.skills.skill_categories.length > 0 &&
+              <ul className="skill-list">
+                {homePageData.acf.skills.skill_categories.map((skill_category, id) => {
+                  return (
+                    <li key={id}>
+                      <span className="category_name">{skill_category.category_name}:</span> {skill_category.skill_list}
+                    </li>
+                  )
+                })}
+              </ul>
+            }
+          </section>
+          <section id="contact" className="section-contact">
+            <h2 className="screen-reader-text">Contact</h2>
+            <p>{homePageData.acf.contact.message}</p>
+            <a href={`mailto:${homePageData.acf.contact.email}`}>{homePageData.acf.contact.email}</a>
           </section>
         </>
       :

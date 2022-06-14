@@ -12,7 +12,7 @@ const PageProject = () => {
   
   const projectPath = `${apiPath_projects}?slug=${project_slug}&_embed`
   const [projectData, setProjectData] = useState([])
-  const [isLoaded, setLoadStatus] = useState(false)
+  const [isProjectLoaded, setProjectLoadStatus] = useState(false)
 
   const navigate = useNavigate();
   
@@ -32,14 +32,14 @@ const PageProject = () => {
           // Ensure data is received, if not redirect to 404
           if (data && data.length > 0 ) {
             setProjectData(data[0])
-            setLoadStatus(true)
+            setProjectLoadStatus(true)
             document.title = `${data[0].title.rendered} - ${appTitle}`;
           } else {
             navigate("/404");
           }
 
         } else {
-          setLoadStatus(false)
+          setProjectLoadStatus(false)
         }
     }
     fetchData()
@@ -49,7 +49,7 @@ const PageProject = () => {
   return (
     <>
       <section className="page page-project">
-        {isLoaded ? 
+        {isProjectLoaded ? 
           <>
             {projectData.acf.project_year && <p>{projectData.acf.project_year}</p>}
             {projectData.title.rendered && <h1>{projectData.title.rendered}</h1>}
