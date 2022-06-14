@@ -4,6 +4,7 @@ import { appTitle, apiPath_projects } from "../global/globals";
 import { FaGithub } from "react-icons/fa";
 import { BsGlobe } from "react-icons/bs"
 import Loading from "../components/Loading";
+import Paragraph from "../components/Paragraph";
 import ProjectFeature from "../components/ProjectFeature";
 
 const PageProject = () => {
@@ -53,7 +54,7 @@ const PageProject = () => {
             {restData.acf.project_year && <p>{restData.acf.project_year}</p>}
             {restData.title.rendered && <h1>{restData.title.rendered}</h1>}
             {restData.acf.project_subtitle && <p>{restData.acf.project_subtitle}</p>}
-            {restData.acf.project_overview && <div dangerouslySetInnerHTML={{__html: restData.acf.project_overview}} />}
+            {restData.acf.project_overview && <Paragraph text={restData.acf.project_overview}/>}
             {restData.acf.project_duration && <p>{restData.acf.project_duration}</p>}
             {restData.acf.project_live_site && restData.acf.project_github_repo && <div>
               {restData.acf.project_live_site && <a href={restData.acf.project_live_site}>

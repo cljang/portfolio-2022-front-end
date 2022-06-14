@@ -1,6 +1,7 @@
 
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import codeTheme  from '../global/codeTheme';
+import Paragraph from './Paragraph';
 
 function ProjectFeature({featureObj, className}) {
 
@@ -13,10 +14,9 @@ function ProjectFeature({featureObj, className}) {
         // For text_content, input is a text area that autmatically adds <p> tags
         case "text_content":
           return (
-            <div 
-              className="text-content"
-              dangerouslySetInnerHTML={{__html: featureContentObj.text}} 
-            />
+            <div className="text-content">
+              <Paragraph text={featureContentObj.text}/>
+            </div>
           );
         
         // For image_content, take a gallery of responsive images from largest to smallest and build a responsive <picture> element
