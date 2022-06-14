@@ -6,9 +6,13 @@ import Loading from "../components/Loading";
 
 const PageHome = () => {
 
+  const homePagePath = `${apiPath_projects}`
+  const [homePageData, setHomePageData] = useState([])
+  const [isHomePageLoaded, setHomePageLoadStatus] = useState(false)
+
   const projectsPath = `${apiPath_projects}`
   const [projectsData, setProjectsData] = useState([])
-  const [isLoaded, setLoadStatus] = useState(false)
+  const [isProjectLoaded, setProjectLoadStatus] = useState(false)
 
   // On mount: 
   //    Set document title
@@ -24,10 +28,10 @@ const PageHome = () => {
         if ( response.ok ) {
           const data = await response.json()
           setProjectsData(data)
-          setLoadStatus(true)
+          setProjectLoadStatus(true)
 
         } else {
-          setLoadStatus(false)
+          setProjectLoadStatus(false)
         }
     }
     fetchData()
@@ -36,13 +40,13 @@ const PageHome = () => {
 
   return (
     <section className="page page-home">
-      {isLoaded ? 
+      {isProjectLoaded ? 
         <>
           <h1>Home</h1>
-          <section>
-            {projectsData.map((project) => {
+          <section id="work">
+            {projectsData.map((project,id) => {
               return (
-                <article>
+                <article key={id}>
                   <h3>{project.title.rendered}</h3>
                   <p>{project.acf.project_subtitle}</p>
                   <Paragraph text={project.acf.project_overview}/>
