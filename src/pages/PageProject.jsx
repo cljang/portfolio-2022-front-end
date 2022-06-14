@@ -10,8 +10,8 @@ import ProjectFeature from "../components/ProjectFeature";
 const PageProject = () => {
   const { project_slug } = useParams();
   
-  const restPath = `${apiPath_projects}?slug=${project_slug}&_embed`
-  const [restData, setData] = useState([])
+  const projectPath = `${apiPath_projects}?slug=${project_slug}&_embed`
+  const [projectData, setProjectData] = useState([])
   const [isLoaded, setLoadStatus] = useState(false)
 
   const navigate = useNavigate();
@@ -25,13 +25,13 @@ const PageProject = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-        const response = await fetch(restPath)
+        const response = await fetch(projectPath)
         if ( response.ok ) {
           const data = await response.json()
 
           // Ensure data is received, if not redirect to 404
           if (data && data.length > 0 ) {
-            setData(data[0])
+            setProjectData(data[0])
             setLoadStatus(true)
             document.title = `${data[0].title.rendered} - ${appTitle}`;
           } else {
@@ -44,30 +44,30 @@ const PageProject = () => {
     }
     fetchData()
     
-  }, [restPath, navigate])
+  }, [projectPath, navigate])
 
   return (
     <>
       <section className="page page-project">
         {isLoaded ? 
           <>
-            {restData.acf.project_year && <p>{restData.acf.project_year}</p>}
-            {restData.title.rendered && <h1>{restData.title.rendered}</h1>}
-            {restData.acf.project_subtitle && <p>{restData.acf.project_subtitle}</p>}
-            {restData.acf.project_overview && <Paragraph text={restData.acf.project_overview}/>}
-            {restData.acf.project_duration && <p>{restData.acf.project_duration}</p>}
-            {restData.acf.project_live_site && restData.acf.project_github_repo && <div>
-              {restData.acf.project_live_site && <a href={restData.acf.project_live_site}>
+            {projectData.acf.project_year && <p>{projectData.acf.project_year}</p>}
+            {projectData.title.rendered && <h1>{projectData.title.rendered}</h1>}
+            {projectData.acf.project_subtitle && <p>{projectData.acf.project_subtitle}</p>}
+            {projectData.acf.project_overview && <Paragraph text={projectData.acf.project_overview}/>}
+            {projectData.acf.project_duration && <p>{projectData.acf.project_duration}</p>}
+            {projectData.acf.project_live_site && projectData.acf.project_github_repo && <div>
+              {projectData.acf.project_live_site && <a href={projectData.acf.project_live_site}>
                 <BsGlobe />
                 <span>Live Site</span>
               </a>}
-              {restData.acf.project_github_repo && <a href={restData.acf.project_github_repo}>
+              {projectData.acf.project_github_repo && <a href={projectData.acf.project_github_repo}>
                 <FaGithub />
                 <span>GitHub Repository</span>
               </a>}
             </div>}
             <section className="project-features-section">
-              {restData.acf.project_features && restData.acf.project_features.map((featureObj,id) => {
+              {projectData.acf.project_features && projectData.acf.project_features.map((featureObj,id) => {
                 return <ProjectFeature key={id} featureObj={featureObj} className={id%2 === 0 ? "align-left" : "align-right"} />
               })}
             </section>

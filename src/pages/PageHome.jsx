@@ -6,8 +6,8 @@ import Loading from "../components/Loading";
 
 const PageHome = () => {
 
-  const restPath = `${apiPath_projects}`
-  const [restData, setData] = useState([])
+  const projectsPath = `${apiPath_projects}`
+  const [projectsData, setProjectsData] = useState([])
   const [isLoaded, setLoadStatus] = useState(false)
 
   // On mount: 
@@ -20,10 +20,10 @@ const PageHome = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-        const response = await fetch(restPath)
+        const response = await fetch(projectsPath)
         if ( response.ok ) {
           const data = await response.json()
-          setData(data)
+          setProjectsData(data)
           setLoadStatus(true)
 
         } else {
@@ -32,7 +32,7 @@ const PageHome = () => {
     }
     fetchData()
     
-  }, [restPath])
+  }, [projectsPath])
 
   return (
     <section className="page page-home">
@@ -40,7 +40,7 @@ const PageHome = () => {
         <>
           <h1>Home</h1>
           <section>
-            {restData.map((project) => {
+            {projectsData.map((project) => {
               return (
                 <article>
                   <h3>{project.title.rendered}</h3>
