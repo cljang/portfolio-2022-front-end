@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { appTitle, apiPath_projects, apiPath_pages } from "../global/globals";
 import Paragraph from "../components/Paragraph";
 import Loading from "../components/Loading";
+import spaceman from "../images/spaceman-sketch.png" 
 
 const PageHome = () => {
 
@@ -65,6 +66,12 @@ const PageHome = () => {
               <h1>{homePageData.title.rendered}</h1>
               <p>{homePageData.acf.page_subtitle}</p>
             </div>
+            {/* <div className="banner-image">
+              <img
+                src={spaceman}
+                alt="Spaceman illustration"
+              />
+            </div> */}
           </section>
           <section id="work" className="section-work">
             <h2 className="screen-reader-text">Work</h2>
