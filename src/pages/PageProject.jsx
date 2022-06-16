@@ -5,6 +5,7 @@ import { FaGithub } from "react-icons/fa";
 import { BsGlobe } from "react-icons/bs"
 import Loading from "../components/Loading";
 import Paragraph from "../components/Paragraph";
+import ResponsivePicture from "../components/ResponsivePicture";
 import ProjectFeature from "../components/ProjectFeature";
 
 const PageProject = () => {
@@ -54,6 +55,13 @@ const PageProject = () => {
             {projectData.acf.project_year && <p>{projectData.acf.project_year}</p>}
             {projectData.title.rendered && <h1>{projectData.title.rendered}</h1>}
             {projectData.acf.project_subtitle && <p>{projectData.acf.project_subtitle}</p>}
+            {projectData.acf.project_featured_image && 
+              <ResponsivePicture 
+                className="featured-image"
+                imageArray={projectData.acf.project_featured_image.image_sources}
+                alt={projectData.acf.project_featured_image.alt}
+              />
+            }
             {projectData.acf.project_overview && <Paragraph text={projectData.acf.project_overview}/>}
             {projectData.acf.project_duration && <p>{projectData.acf.project_duration}</p>}
             {projectData.acf.project_live_site && projectData.acf.project_github_repo && <div>

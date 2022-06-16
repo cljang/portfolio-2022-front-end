@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import Paragraph from "./Paragraph"
+import ResponsivePicture from "./ResponsivePicture"
 
 function ProjectCard({project, className}) {
   return (
@@ -13,9 +14,12 @@ function ProjectCard({project, className}) {
           <Paragraph text={project.acf.project_overview}/>
           <Link to={`/projects/${project.slug}`}>View the project</Link>
         </div>
-        <picture className="project-image">
-          
-        </picture>
+        <ResponsivePicture 
+          className="project-image"
+          imageArray={project.acf.project_featured_image.image_sources}
+          alt={project.acf.project_featured_image.alt}
+          limitSteps={2}
+        />
       </article>
   )
 }

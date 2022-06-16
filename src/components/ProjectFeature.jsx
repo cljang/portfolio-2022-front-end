@@ -2,6 +2,7 @@
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import codeTheme  from '../global/codeTheme';
 import Paragraph from './Paragraph';
+import ResponsivePicture from './ResponsivePicture';
 
 function ProjectFeature({featureObj, className}) {
 
@@ -22,31 +23,11 @@ function ProjectFeature({featureObj, className}) {
         // For image_content, take a gallery of responsive images from largest to smallest and build a responsive <picture> element
         case "image_content":
           return (
-            <picture className="image-content">
-              {featureContentObj.image_sources && featureContentObj.image_sources.map((image, id) => {
-                // For the final image in image_sources array, output an img tag, otherwise, output a source tag
-                if (id + 1 === featureContentObj.image_sources.length) {
-                  return (
-                    <img 
-                      key={id}
-                      src={image.url} 
-                      alt={featureContentObj.alt} 
-                      loading="lazy" 
-                    />
-                  )
-                } else {
-                  let nextImage = featureContentObj.image_sources[id + 1];
-                  return (
-                    <source 
-                      key={id}
-                      media={`(min-width: ${nextImage.width}px)`} 
-                      srcSet={image.url} 
-                      type={image.mime_type} 
-                    />
-                  )
-                }
-              })}
-            </picture>
+            <ResponsivePicture 
+              className="image-content"
+              imageArray={featureContentObj.image_sources}
+              alt={featureContentObj.alt}
+            />
           );
 
         // For code_content, use a Prism.js syntax highlighter to output a code block

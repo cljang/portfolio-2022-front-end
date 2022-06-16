@@ -1,0 +1,38 @@
+// Take an array of image objects from WordPress, assuming they are ordered from 
+
+function ResponsivePicture({imageArray, className, alt}) {
+  return (
+    <picture className={className}>
+      {imageArray && imageArray.map((image, id) => {
+        // For the final image in imageArray, output an img tag, otherwise, output a source tag
+        if (id + 1 === imageArray.length) {
+          return (
+            <img 
+              key={id}
+              src={image.url} 
+              alt={alt} 
+              loading="lazy" 
+            />
+          )
+        } else {
+          let nextImage = imageArray[id + 1];
+          return (
+            <source 
+              key={id}
+              media={`(min-width: ${nextImage.width}px)`} 
+              srcSet={image.url} 
+              type={image.mime_type ? image.mime_type : ""} 
+            />
+          )
+        }
+      })}
+    </picture>
+  )
+}
+
+ResponsivePicture.defaultProps = {
+  className: "",
+  alt: "",
+}
+
+export default ResponsivePicture
