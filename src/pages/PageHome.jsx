@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { appTitle, apiPath_projects, apiPath_pages } from "../global/globals";
 import Paragraph from "../components/Paragraph";
+import ProjectCard from "../components/ProjectCard";
 import Loading from "../components/Loading";
-import spaceman from "../images/spaceman-sketch.png" 
 
 const PageHome = () => {
 
@@ -20,7 +19,7 @@ const PageHome = () => {
   //    Scroll back to the top
   useEffect(() => {
     document.title = `${appTitle}`
-    window.scrollTo(0, 0); 
+    window.scrollTo(0, 0);
   }, [])
 
   // Load Home Page Data
@@ -31,7 +30,6 @@ const PageHome = () => {
         const data = await response.json()
         setHomePageData(data[0])
         setHomePageLoadStatus(true)
-
       } else {
         setHomePageLoadStatus(false)
       }
@@ -66,24 +64,17 @@ const PageHome = () => {
               <h1>{homePageData.title.rendered}</h1>
               <p>{homePageData.acf.page_subtitle}</p>
             </div>
-            {/* <div className="banner-image">
-              <img
-                src={spaceman}
-                alt="Spaceman illustration"
-              />
-            </div> */}
           </section>
           <section id="work" className="section-work">
             <h2 className="screen-reader-text">Work</h2>
-            {homePageData.acf.featured_projects.map((project_id) => {
+            {homePageData.acf.featured_projects.map((project_id, id) => {
               const project = projectsData.find((project) => project.id === project_id);
               return (
-                <article key={project.id}>
-                  <h3>{project.title.rendered}</h3>
-                  <p>{project.acf.project_subtitle}</p>
-                  <Paragraph text={project.acf.project_overview}/>
-                  <Link to={`/projects/${project.slug}`}>View the project</Link>
-                </article>
+                <ProjectCard 
+                  key={project.id}
+                  project={project} 
+                  className={id%2 === 0 ? "align-left" : "align-right" }
+                />
               )
             })}
           </section>

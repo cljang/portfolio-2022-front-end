@@ -16,6 +16,13 @@ body {
 main {
   position: relative;
   flex-grow: 1;
+  display: grid;
+  grid-template-areas: ". content .";
+  grid-template-columns: minmax(2rem, 1fr) minmax(0, $max-width) minmax(2rem, 1fr);
+
+  section.page {
+    grid-column: content;
+  }
 }
 
 a {

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import NavMain from "./NavMain";
 import { useSelector, useDispatch } from "react-redux"
-import { toggleNav } from "../features/navOpen/navOpenSlice";
+import { closeNav, toggleNav } from "../features/navOpen/navOpenSlice";
 
 function Header() {
   
@@ -14,11 +14,18 @@ function Header() {
     dispatch(toggleNav(navOpen))
   }
 
+  const hideNav = () => {
+    dispatch(closeNav())
+  }
+
   return (
     <header>
       <div className="navbar">
         <div className="navbar-logo">
-          <Link to="/">
+          <Link 
+            to="/"
+            onClick={hideNav}
+          >
             <Logo />
             <span className="screen-reader-text">Clayton Jang</span>
           </Link>
