@@ -6,6 +6,8 @@
     "thumbnail"
     "text"
   ;
+  margin: 4rem 0;
+  align-items: center;
 
   .project-text {
     grid-column: text;
@@ -22,12 +24,28 @@
       grid-template-areas: 
         "text text text text . thumbnail thumbnail thumbnail thumbnail thumbnail thumbnail thumbnail"
       ;
+      
+      .project-image {
+        order: 1;
+      }
+
+      .project-text {
+        order: 0;
+      }
     }
     
     &.align-right {
       grid-template-areas: 
       "thumbnail thumbnail thumbnail thumbnail thumbnail thumbnail thumbnail . text text text text"
       ;
+
+      .project-image {
+        order: 0;
+      }
+
+      .project-text {
+        order: 1;
+      }
     }
   }
 }
