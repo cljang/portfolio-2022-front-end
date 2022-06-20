@@ -52,29 +52,60 @@ const PageProject = () => {
       <section className="page page-project">
         {isProjectLoaded ? 
           <>
-            {projectData.acf.project_year && <p>{projectData.acf.project_year}</p>}
-            {projectData.title.rendered && <h1>{projectData.title.rendered}</h1>}
-            {projectData.acf.project_subtitle && <p>{projectData.acf.project_subtitle}</p>}
-            {projectData.acf.project_featured_image && 
-              <ResponsivePicture 
-                className="featured-image"
-                imageArray={projectData.acf.project_featured_image.image_sources}
-                alt={projectData.acf.project_featured_image.alt}
-              />
-            }
-            {projectData.acf.project_overview && <Paragraph text={projectData.acf.project_overview}/>}
-            {projectData.acf.project_duration && <p>{projectData.acf.project_duration}</p>}
-            {projectData.acf.project_live_site && projectData.acf.project_github_repo && <div>
-              {projectData.acf.project_live_site && <a href={projectData.acf.project_live_site}>
-                <BsGlobe />
-                <span>Live Site</span>
-              </a>}
-              {projectData.acf.project_github_repo && <a href={projectData.acf.project_github_repo}>
-                <FaGithub />
-                <span>GitHub Repository</span>
-              </a>}
-            </div>}
+            <header className="project-header">
+              {projectData.acf.project_year && <p>{projectData.acf.project_year}</p>}
+              {projectData.title.rendered && <h1>{projectData.title.rendered}</h1>}
+              {projectData.acf.project_subtitle && <p>{projectData.acf.project_subtitle}</p>}
+              {projectData.acf.project_featured_image &&
+                <ResponsivePicture
+                  className="featured-image"
+                  imageArray={projectData.acf.project_featured_image.image_sources}
+                  alt={projectData.acf.project_featured_image.alt}
+                />
+              }
+            </header>
+            <section className="project-details-section">
+              <h2 className="screen-reader-text">Project Details</h2>
+              <div className="left-column">
+                {
+                  projectData.acf.project_overview &&
+                  <section>
+                    <h3>Overview</h3>
+                    <Paragraph text={projectData.acf.project_overview}/>
+                  </section>
+                }
+                {
+                  projectData.acf.project_technologies &&
+                  <section>
+                    <h3>Technologies</h3>
+                    <p>{projectData.acf.project_technologies}</p>
+                  </section>
+                }
+              </div>
+              <div className="right-column">
+                {
+                  projectData.acf.project_duration &&
+                  <section>
+                    <h3>Duration</h3>
+                    <p>{projectData.acf.project_duration}</p>
+                  </section>
+                }
+                {
+                  projectData.acf.project_live_site && projectData.acf.project_github_repo &&
+                  <section>
+                    <h3>View the Project</h3>
+                    {projectData.acf.project_live_site && <a href={projectData.acf.project_live_site}>
+                      <BsGlobe title="Live Site"/>
+                    </a>}
+                    {projectData.acf.project_github_repo && <a href={projectData.acf.project_github_repo}>
+                      <FaGithub title="GitHub Repository"/>
+                    </a>}
+                  </section>
+                }
+              </div>
+            </section>
             <section className="project-features-section">
+              <h2 className="screen-reader-text">Features</h2>
               {projectData.acf.project_features && projectData.acf.project_features.map((featureObj,id) => {
                 return <ProjectFeature key={id} featureObj={featureObj} className={id%2 === 0 ? "align-left" : "align-right"} />
               })}

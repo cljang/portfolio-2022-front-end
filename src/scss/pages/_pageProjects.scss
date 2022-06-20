@@ -2,11 +2,35 @@
 
 .page-project {
 
+  .project-header {
+    
+    
+    .featured-image {
+      margin: 10rem 0;
+    }
+  }
+
+  .project-details-section {
+    @media (min-width: $bp-laptop) {
+      display: grid;
+      grid-template-columns: 1fr 7fr 1fr 3fr;
+      grid-template-areas: ". left . right";
+
+      .left-column {
+        grid-area: left;
+      }
+
+      .right-column {
+        grid-area: right;
+      }
+    }
+  }
+
 
   .project-features-section {
     @media (min-width: $bp-laptop) {
       display: grid;
-      grid-template-columns: 3fr 4fr 3fr;
+      grid-template-columns: minmax(2rem, 1fr) 3fr 4fr 3fr minmax(2rem, 1fr);
     }
     
     .project-feature {
@@ -14,11 +38,11 @@
     }
 
     .align-left {
-      grid-column: 1/3;
+      grid-column: 2/4;
     }
 
     .align-right {
-      grid-column: 2/4;
+      grid-column: 3/5;
     }
 
     .project-feature-content {
