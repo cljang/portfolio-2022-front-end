@@ -1,9 +1,12 @@
 // Take an array of image objects from WordPress, assuming they are ordered from 
 
-function ResponsivePicture({imageArray, className, alt}) {
+function ResponsivePicture({imageArray, className, alt, limitSteps}) {
   return (
     <picture className={className}>
       {imageArray && imageArray.map((image, id) => {
+        if (limitSteps && id < imageArray.length - limitSteps) {
+          return null;
+        }
         // For the final image in imageArray, output an img tag, otherwise, output a source tag
         if (id + 1 === imageArray.length) {
           return (
@@ -33,6 +36,7 @@ function ResponsivePicture({imageArray, className, alt}) {
 ResponsivePicture.defaultProps = {
   className: "",
   alt: "",
+  limitSteps: false,
 }
 
 export default ResponsivePicture
