@@ -15,7 +15,7 @@ function ProjectFeature({featureObj, className}) {
         // For text_content, input is a text area that autmatically adds <p> tags
         case "text_content":
           return (
-            <div className="text-content">
+            featureContentObj.text && <div className="text-content">
               <Paragraph text={featureContentObj.text}/>
             </div>
           );
@@ -42,13 +42,15 @@ function ProjectFeature({featureObj, className}) {
                   dangerouslySetInnerHTML={{__html: featureContentObj.introduction}} 
                 />
               }
-              <SyntaxHighlighter 
-                language={featureContentObj.language} 
-                style={codeTheme}
-                showLineNumbers={true}
-              >
-                {featureContentObj.code}
-              </SyntaxHighlighter>
+              { featureContentObj.code && 
+                <SyntaxHighlighter 
+                  language={featureContentObj.language} 
+                  style={codeTheme}
+                  showLineNumbers={true}
+                >
+                  {featureContentObj.code}
+                </SyntaxHighlighter>
+              }
             </div>
           );
       
