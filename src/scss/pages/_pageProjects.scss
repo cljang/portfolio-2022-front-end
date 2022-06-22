@@ -53,6 +53,17 @@
     }
   }
 
+  .project-links-section {
+    .project-link {
+      padding: 1rem;
+      font-size: 2rem;
+
+      &:first-of-type {
+        padding-left: 0;
+      }
+    }
+  }
+
 
   .project-features-section {
     @media (min-width: $bp-laptop) {
@@ -67,7 +78,7 @@
     .project-feature {
       margin-bottom: 6rem;
 
-      &:last-child {
+      &:last-of-type {
         margin-bottom: 0;
       }
     }

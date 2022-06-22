@@ -109,14 +109,18 @@ const PageProject = () => {
                 }
                 {
                   projectData.acf.project_live_site && projectData.acf.project_github_repo &&
-                  <section>
+                  <section className="project-links-section">
                     <h3>View the Project</h3>
-                    {projectData.acf.project_live_site && <a href={projectData.acf.project_live_site}>
-                      <BsGlobe title="Live Site"/>
-                    </a>}
-                    {projectData.acf.project_github_repo && <a href={projectData.acf.project_github_repo}>
-                      <FaGithub title="GitHub Repository"/>
-                    </a>}
+                    {projectData.acf.project_live_site && 
+                      <a href={projectData.acf.project_live_site} className="project-link">
+                        <BsGlobe title="Live Site" className="link-icon live-site-icon" />
+                      </a>
+                    }
+                    {projectData.acf.project_github_repo && 
+                      <a href={projectData.acf.project_github_repo} className="project-link">
+                        <FaGithub title="GitHub Repository" className="link-icon github-icon" />
+                      </a>
+                    }
                   </section>
                 }
               </div>
