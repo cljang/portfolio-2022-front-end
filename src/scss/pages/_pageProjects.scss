@@ -10,7 +10,17 @@
     
     
     .featured-image {
-      margin: 10rem 0;
+      margin: 8rem -2rem;
+      width: 100vw;
+
+      @media (min-width: $bp-laptop) {
+        margin: 10rem calc(calc(100% - 100vw)/2);
+      }
+
+      @media (min-width: $max-width) {
+        margin: 10rem 0;
+        width: 100%;
+      }
     }
   }
 
