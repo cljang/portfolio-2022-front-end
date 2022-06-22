@@ -5,5 +5,44 @@
   margin: 0;
 
   .section-banner {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0 -2rem;
+    position: relative;
+
+    @media (min-width: $bp-laptop) {
+      margin: 0 calc(calc(100% - 100vw)/2);
+    }
+
+    .banner-backdrop {
+      width: 100%;
+      height: 100%;
+      
+      .backdrop-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .banner-content {
+      position: absolute;
+      inset: 4rem 2rem;
+      max-width: $max-width;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      .banner-text {
+        order: 2;
+      }
+
+      .banner-image {
+        max-width: 25rem;
+      }
+    }
   }
 }
