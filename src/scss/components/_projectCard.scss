@@ -20,12 +20,17 @@
       align-items: center;
       width: 12rem;
       padding: 1rem;
+      margin: 0 auto;
       background-color: $background__blue-dark;
       border-radius: 4rem;
       @include use-heading-style;
 
       &:hover {
         text-decoration: none;
+      }
+
+      @media (min-width: $bp-laptop) {
+        margin: 0;
       }
     }
   }
