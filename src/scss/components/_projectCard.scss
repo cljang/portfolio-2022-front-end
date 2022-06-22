@@ -15,22 +15,64 @@
     }
 
     .project-link {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 12rem;
+      display: block;
+      width: 11rem;
+      position: relative;
+      height: 4rem;
       padding: 1rem;
       margin: 0 auto;
       background-color: $background__blue-dark;
       border-radius: 4rem;
+      overflow: hidden;
       @include use-heading-style;
+      line-height: 1;
 
-      &:hover {
+      &:hover,
+      &:focus {
         text-decoration: none;
+      }
+
+      .link-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 9rem;
+        position: absolute;
+        right: 1rem;
+        top: 0;
+        bottom: 0;
       }
 
       @media (min-width: $bp-laptop) {
         margin: 0;
+        max-width: 4rem;
+        transition: max-width 0.3s ease-in-out 0.2s;
+        
+        .link-content {
+          right: 1.4rem;
+          transition: right 0.3s ease-in-out 0.3s;
+        }
+        
+        .link-text {
+          opacity: 0;
+          transition: opacity 0.3s ease-in-out;
+        }
+
+        &:hover,
+        &:focus {
+          max-width: 11rem;
+          transition: max-width 0.3s ease-in-out;
+
+          .link-content {
+            right: 1rem;
+            transition: right 0.3s ease-in-out;
+          }
+
+          .link-text {
+            opacity: 1;
+            transition: opacity 0.3s ease-in-out 0.2s;
+          }
+        }
       }
     }
   }

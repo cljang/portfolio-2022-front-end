@@ -19,7 +19,9 @@ function ProjectCard({project, className}) {
           <h3 className="project-title">{project.title.rendered}</h3>
           <p className="project-subtitle">{project.acf.project_subtitle}</p>
           <Paragraph className="project-description" text={project.acf.project_overview}/>
-          <Link to={`/projects/${project.slug}`} className="project-link"><span className="link-text">View Project</span> <FaArrowRight className="link-arrow"/></Link>
+          <Link to={`/projects/${project.slug}`} className="project-link">
+            <span className="link-content"><span className="link-text">View Project</span> <FaArrowRight className="link-icon" aria-hidden /></span>
+          </Link>
         </div>
       </article>
   )
