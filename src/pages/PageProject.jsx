@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { appTitle, apiPath_projects } from "../global/globals";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt as FaLink } from "react-icons/fa";
 import { BsGlobe } from "react-icons/bs"
 import Loading from "../components/Loading";
 import Paragraph from "../components/Paragraph";
@@ -91,6 +91,23 @@ const PageProject = () => {
                   </section>
                 }
                 {
+                  projectData.acf.project_collaborators &&
+                  <section className="project-collaborators-section">
+                    <h3>Collaborators</h3>
+                    <ul>
+                      {projectData.acf.project_collaborators.map((collaborator, id) => {
+                        return (
+                          <li key={id}>
+                            <a href={collaborator.collaborator_link} className="collaborator-link" >
+                              {collaborator.collaborator_name} <FaLink className="link-icon" />
+                            </a>
+                          </li>
+                        )
+                      })}
+                    </ul>
+                  </section>
+                }
+                {
                   projectData.acf.project_live_site && projectData.acf.project_github_repo &&
                   <section>
                     <h3>View the Project</h3>
@@ -105,7 +122,7 @@ const PageProject = () => {
               </div>
             </section>
             <section className="project-features-section">
-              <h2 className="screen-reader-text">Features</h2>
+              <h2>Features</h2>
               {projectData.acf.project_features && projectData.acf.project_features.map((featureObj,id) => {
                 return <ProjectFeature key={id} featureObj={featureObj} className={id%2 === 0 ? "align-left" : "align-right"} />
               })}
