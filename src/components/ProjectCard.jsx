@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import Paragraph from "./Paragraph"
 import ResponsivePicture from "./ResponsivePicture"
+import { FaArrowRight } from "react-icons/fa";
 
 function ProjectCard({project, className}) {
   return (
@@ -15,10 +16,10 @@ function ProjectCard({project, className}) {
           limitSteps={2}
         />
         <div className="project-text">
-          <h3>{project.title.rendered}</h3>
-          <p>{project.acf.project_subtitle}</p>
-          <Paragraph text={project.acf.project_overview}/>
-          <Link to={`/projects/${project.slug}`}>View the project</Link>
+          <h3 className="project-title">{project.title.rendered}</h3>
+          <p className="project-subtitle">{project.acf.project_subtitle}</p>
+          <Paragraph className="project-description" text={project.acf.project_overview}/>
+          <Link to={`/projects/${project.slug}`} className="project-link"><span className="link-text">View Project</span> <FaArrowRight className="link-arrow"/></Link>
         </div>
       </article>
   )

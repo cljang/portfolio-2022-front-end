@@ -3,6 +3,38 @@
 .project-card {
   margin: 4rem 0;
 
+  .project-text {
+    .project-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.125rem;
+    }
+
+    .project-subtitle {
+      font-size: 0.875rem;
+    }
+
+    .project-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 12rem;
+      padding: 1rem;
+      background-color: $background__blue-dark;
+      border-radius: 4rem;
+      font-family: $heading-font;
+      font-weight: 700;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .project-image {
+    width: 100vw;
+    margin: 0 -2rem 2rem;
+  }
+
   
   @media (min-width: $bp-laptop) {
     display: grid;
@@ -14,6 +46,8 @@
   
     .project-image {
       grid-column: thumbnail;
+      width: unset;
+      margin: unset;
     }
     
     &.align-left {
