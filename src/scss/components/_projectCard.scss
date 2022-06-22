@@ -1,28 +1,25 @@
 @use "../global/variables" as *;
 
 .project-card {
-  display: grid;
-  grid-template-areas: 
-    "thumbnail"
-    "text"
-  ;
   margin: 4rem 0;
-  align-items: center;
 
-  .project-text {
-    grid-column: text;
-  }
-
-  .project-image {
-    grid-column: thumbnail;
-  }
-
+  
   @media (min-width: $bp-laptop) {
-    grid-template-columns: repeat(12, 1fr);
+    display: grid;
+    align-items: center;
 
+    .project-text {
+      grid-column: text;
+    }
+  
+    .project-image {
+      grid-column: thumbnail;
+    }
+    
     &.align-left {
+      grid-template-columns: 4fr 1fr 7fr;
       grid-template-areas: 
-        "text text text text . thumbnail thumbnail thumbnail thumbnail thumbnail thumbnail thumbnail"
+        "text . thumbnail"
       ;
       
       .project-image {
@@ -35,8 +32,9 @@
     }
     
     &.align-right {
+      grid-template-columns: 7fr 1fr 4fr;
       grid-template-areas: 
-      "thumbnail thumbnail thumbnail thumbnail thumbnail thumbnail thumbnail . text text text text"
+        "thumbnail . text"
       ;
 
       .project-image {
