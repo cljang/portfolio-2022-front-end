@@ -27,8 +27,8 @@
   .project-details-section {
     @media (min-width: $bp-laptop) {
       display: grid;
-      grid-template-columns: 1fr 7fr 1fr 3fr;
-      grid-template-areas: ". left . right";
+      grid-template-columns: 1fr 7fr 1fr 2fr 1fr;
+      grid-template-areas: ". left . right .";
 
       .left-column {
         grid-area: left;
