@@ -53,9 +53,15 @@ const PageProject = () => {
         {isProjectLoaded ? 
           <>
             <header className="project-header">
-              {projectData.acf.project_year && <p>{projectData.acf.project_year}</p>}
-              {projectData.title.rendered && <h1>{projectData.title.rendered}</h1>}
-              {projectData.acf.project_subtitle && <p>{projectData.acf.project_subtitle}</p>}
+              {projectData.acf.project_year && 
+                <p className="project-year">{projectData.acf.project_year}</p>
+              }
+              {projectData.title.rendered && 
+                <h1>{projectData.title.rendered}</h1>
+              }
+              {projectData.acf.project_subtitle && 
+                <p>{projectData.acf.project_subtitle}</p>
+              }
               {projectData.acf.project_featured_image &&
                 <ResponsivePicture
                   className="featured-image"

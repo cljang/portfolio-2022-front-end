@@ -1,4 +1,5 @@
 @use "../global/variables" as *;
+@use "../global/mixins" as *;
 
 .page-project {
 
@@ -7,6 +8,9 @@
   }
 
   .project-header {
+    .project-year {
+      @include use-heading-style;
+    }
     
     
     .featured-image {

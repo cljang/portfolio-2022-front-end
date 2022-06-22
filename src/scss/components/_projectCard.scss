@@ -1,4 +1,5 @@
 @use "../global/variables" as *;
+@use "../global/mixins" as *;
 
 .project-card {
   margin: 4rem 0;
@@ -21,8 +22,7 @@
       padding: 1rem;
       background-color: $background__blue-dark;
       border-radius: 4rem;
-      font-family: $heading-font;
-      font-weight: 700;
+      @include use-heading-style;
 
       &:hover {
         text-decoration: none;

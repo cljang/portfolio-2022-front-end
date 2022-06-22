@@ -1,0 +1,6 @@
+@use "./variables" as *;
+
+@mixin use-heading-style {
+  font-family: $heading-font;
+  font-weight: 700;
+}
