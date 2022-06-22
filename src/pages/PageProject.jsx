@@ -105,7 +105,7 @@ const PageProject = () => {
                         return (
                           <li key={id}>
                             <a href={collaborator.collaborator_link} className="collaborator-link" >
-                              {collaborator.collaborator_name} <FaLink className="link-icon" />
+                              {collaborator.collaborator_name} <FaLink className="link-icon" aria-hidden />
                             </a>
                           </li>
                         )

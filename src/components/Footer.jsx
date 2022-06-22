@@ -14,24 +14,21 @@ function Footer() {
             <a 
               href="mailto:clayton.jang@gmail.com"
             >
-              <FaEnvelope />
-              <span className="screen-reader-text">Email</span>
+              <FaEnvelope title="Email" />
             </a>
             <a 
               href="https://github.com/cljang/"
               target="_blank" 
               rel="noopener noreferrer"
             >
-              <FaGithub />
-              <span className="screen-reader-text">GitHub</span>
+              <FaGithub title="GitHub" />
             </a>
             <a 
               href="https://www.linkedin.com/in/clayton-jang/"
               target="_blank" 
               rel="noopener noreferrer"
             >
-              <FaLinkedin />
-              <span className="screen-reader-text">LinkedIn</span>
+              <FaLinkedin title="LinkedIn" />
             </a>
           </div>
         </section>

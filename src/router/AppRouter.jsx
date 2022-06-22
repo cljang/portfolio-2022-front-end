@@ -11,7 +11,7 @@ function AppRouter() {
       <Link to="#site-main" className="screen-reader-text">Skip to content</Link>
       <div className="site-wrapper">
         <Header />
-        <main>
+        <main id="site-main">
           <Routes>
               <Route path="/" element={<PageHome />} />
               <Route path="/projects/:project_slug" element={<PageProject />} />
