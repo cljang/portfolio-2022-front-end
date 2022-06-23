@@ -8,6 +8,10 @@
     .project-title {
       font-size: 1.5rem;
       margin-bottom: 0.125rem;
+
+      @media (min-width: $bp-tablet) {
+        font-size: 2.25rem;
+      }
     }
 
     .project-subtitle {
