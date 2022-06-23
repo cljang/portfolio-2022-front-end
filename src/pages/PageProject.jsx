@@ -53,20 +53,20 @@ const PageProject = () => {
         {isProjectLoaded ? 
           <>
             <header className="project-header">
-              {projectData.acf.project_year && 
-                <p className="project-year">{projectData.acf.project_year}</p>
+              {projectData.acf.year && 
+                <p className="project-year">{projectData.acf.year}</p>
               }
               {projectData.title.rendered && 
                 <h1>{projectData.title.rendered}</h1>
               }
-              {projectData.acf.project_subtitle && 
-                <p>{projectData.acf.project_subtitle}</p>
+              {projectData.acf.subtitle && 
+                <p>{projectData.acf.subtitle}</p>
               }
-              {projectData.acf.project_featured_image &&
+              {projectData.acf.featured_image &&
                 <ResponsivePicture
                   className="featured-image"
-                  imageArray={projectData.acf.project_featured_image.image_sources}
-                  alt={projectData.acf.project_featured_image.alt}
+                  imageArray={projectData.acf.featured_image.image_sources}
+                  alt={projectData.acf.featured_image.alt}
                 />
               }
             </header>
@@ -74,38 +74,38 @@ const PageProject = () => {
               <h2 className="screen-reader-text">Project Details</h2>
               <div className="left-column">
                 {
-                  projectData.acf.project_overview &&
+                  projectData.acf.overview &&
                   <section>
                     <h3>Overview</h3>
-                    <Paragraph text={projectData.acf.project_overview}/>
+                    <Paragraph text={projectData.acf.overview}/>
                   </section>
                 }
                 {
-                  projectData.acf.project_technologies &&
+                  projectData.acf.technologies &&
                   <section>
                     <h3>Technologies</h3>
-                    <p>{projectData.acf.project_technologies}</p>
+                    <p>{projectData.acf.technologies}</p>
                   </section>
                 }
               </div>
               <div className="right-column">
                 {
-                  projectData.acf.project_duration &&
+                  projectData.acf.duration &&
                   <section>
                     <h3>Duration</h3>
-                    <p>{projectData.acf.project_duration}</p>
+                    <p>{projectData.acf.duration}</p>
                   </section>
                 }
                 {
-                  projectData.acf.project_collaborators &&
+                  projectData.acf.collaborators &&
                   <section className="project-collaborators-section">
                     <h3>Collaborators</h3>
                     <ul>
-                      {projectData.acf.project_collaborators.map((collaborator, id) => {
+                      {projectData.acf.collaborators.map((collaborator, id) => {
                         return (
                           <li key={id}>
-                            <a href={collaborator.collaborator_link} className="collaborator-link" >
-                              {collaborator.collaborator_name} <FaLink className="link-icon" aria-hidden />
+                            <a href={collaborator.link} className="collaborator-link" >
+                              {collaborator.name} <FaLink className="link-icon" aria-hidden />
                             </a>
                           </li>
                         )
@@ -114,16 +114,16 @@ const PageProject = () => {
                   </section>
                 }
                 {
-                  projectData.acf.project_live_site && projectData.acf.project_github_repo &&
+                  (projectData.acf.live_site || projectData.acf.github_repo) &&
                   <section className="project-links-section">
                     <h3>View the Project</h3>
-                    {projectData.acf.project_live_site && 
-                      <a href={projectData.acf.project_live_site} className="project-link">
+                    {projectData.acf.live_site && 
+                      <a href={projectData.acf.live_site} className="project-link">
                         <BsGlobe title="Live Site" className="link-icon live-site-icon" />
                       </a>
                     }
-                    {projectData.acf.project_github_repo && 
-                      <a href={projectData.acf.project_github_repo} className="project-link">
+                    {projectData.acf.github_repo && 
+                      <a href={projectData.acf.github_repo} className="project-link">
                         <FaGithub title="GitHub Repository" className="link-icon github-icon" />
                       </a>
                     }
@@ -133,7 +133,7 @@ const PageProject = () => {
             </section>
             <section className="project-features-section">
               <h2>Features</h2>
-              {projectData.acf.project_features && projectData.acf.project_features.map((featureObj,id) => {
+              {projectData.acf.features && projectData.acf.features.map((featureObj,id) => {
                 return <ProjectFeature key={id} featureObj={featureObj} className={id%2 === 0 ? "align-left" : "align-right"} />
               })}
             </section>

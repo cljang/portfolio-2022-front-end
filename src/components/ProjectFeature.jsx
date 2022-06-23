@@ -64,8 +64,8 @@ function ProjectFeature({featureObj, className}) {
     <>
       {featureObj && 
         <section className={`project-feature ${className}`}>
-          <h3 className="project-feature-heading">{featureObj.feature_heading}</h3>
-          {featureObj.feature_content.map((featureContentObj, id) => {
+          <h3 className="project-feature-heading">{featureObj.heading}</h3>
+          {featureObj.content.map((featureContentObj, id) => {
             return (
               <div 
                 key={id}

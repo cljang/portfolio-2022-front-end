@@ -11,14 +11,14 @@ function ProjectCard({project, className}) {
       >
         <ResponsivePicture 
           className="project-image"
-          imageArray={project.acf.project_featured_image.image_sources}
-          alt={project.acf.project_featured_image.alt}
+          imageArray={project.acf.featured_image.image_sources}
+          alt={project.acf.featured_image.alt}
           limitSteps={2}
         />
         <div className="project-text">
           <h3 className="project-title">{project.title.rendered}</h3>
-          <p className="project-subtitle">{project.acf.project_subtitle}</p>
-          <Paragraph className="project-description" text={project.acf.project_overview}/>
+          <p className="project-subtitle">{project.acf.subtitle}</p>
+          <Paragraph className="project-description" text={project.acf.overview}/>
           <Link to={`/projects/${project.slug}`} className="project-link">
             <span className="link-content"><span className="link-text">View Project</span> <FaArrowRight className="link-icon" aria-hidden /></span>
           </Link>
