@@ -3,7 +3,6 @@ import { appTitle, apiPath_projects, apiPath_pages } from "../global/globals";
 import Paragraph from "../components/Paragraph";
 import ProjectCard from "../components/ProjectCard";
 import Loading from "../components/Loading";
-import backdropImg from "../images/space-bg.svg";
 import spaceman from "../images/spaceman-sketch.png";
 
 const PageHome = () => {
@@ -62,17 +61,12 @@ const PageHome = () => {
       {(isHomePageLoaded && isProjectLoaded) ? 
         <>
           <section className="section-banner">
-            <div className="banner-backdrop">
-              <img src={backdropImg} alt="Space background" className="backdrop-image" />
+            <div className="banner-text">
+              <h1 className="banner-title">{homePageData.title.rendered}</h1>
+              <p className="banner-subtitle">{homePageData.acf.page_subtitle}</p>
             </div>
-            <div className="banner-content">
-              <div className="banner-text">
-                <h1>{homePageData.title.rendered}</h1>
-                <p>{homePageData.acf.page_subtitle}</p>
-              </div>
-              <div className="banner-image">
-                <img src={spaceman} alt="Spaceman illustration" />
-              </div>
+            <div className="banner-image">
+              <img src={spaceman} alt="Spaceman illustration" />
             </div>
           </section>
           <section id="work" className="section-work">

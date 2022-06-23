@@ -1,4 +1,5 @@
 @use "../global/variables" as *;
+@use "../global/mixins" as *;
 
 .page-home {
   padding: 0;
@@ -6,43 +7,77 @@
 
   .section-banner {
     width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+    min-height: min(100vh, 75rem);
     margin: 0 -2rem;
-    position: relative;
+    background-image: url("../../images/space-bg.svg");
+    background-size: cover;
+    background-position: center;
+    display: grid;
+    grid-template-areas: 
+      ". . ."
+      ". image ."
+      ". text ."
+      ". . ."
+    ;
+    grid-template-rows: minmax(8rem, 1fr) auto auto minmax(8rem, 1fr);
+    grid-template-columns: minmax(2rem, 1fr) minmax(0, $max-width) minmax(2rem, 1fr);
 
+    .banner-text {
+      grid-area: text;
+      justify-self: center;
+      margin-top: 4rem;
+
+      @media (min-width: $bp-laptop) {
+        justify-self: unset;
+        margin: 0;
+        align-self: flex-end;
+      }
+
+      .banner-title {
+        font-weight: 900;
+        font-size: 2.125rem;
+
+        @media (min-width: $bp-phone-lg) {
+          font-size: 3.5rem;
+        }
+
+        @media (min-width: $bp-desktop) {
+          font-size: 4.75rem;
+        }
+
+        @media (min-width: $bp-desktop-lg) {
+          font-size: 6rem;
+        }
+      }
+
+      .banner-subtitle {
+        @include use-heading-style;
+
+        @media (min-width: $bp-desktop) {
+          font-size: 1.5rem;
+        }
+      }
+    }
+    
+    .banner-image {
+      grid-area: image;
+      max-width: 25rem;
+      justify-self: center;
+
+      @media (min-width: $bp-laptop) {
+        max-width: 35rem;
+      }
+    }
+    
     @media (min-width: $bp-laptop) {
       margin: 0 calc(calc(100% - 100vw)/2);
-    }
-
-    .banner-backdrop {
-      width: 100%;
-      height: 100%;
-      
-      .backdrop-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
-
-    .banner-content {
-      position: absolute;
-      inset: 4rem 2rem;
-      max-width: $max-width;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: flex-end;
-
-      .banner-text {
-        order: 2;
-      }
-
-      .banner-image {
-        max-width: 25rem;
-      }
+      grid-template-areas: 
+        ". . . ."
+        ". text image ."
+        ". . . ."
+      ;
+      grid-template-rows: minmax(8rem, 1fr) auto minmax(8rem, 1fr);
+      grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, calc($max-width/2))) minmax(2rem, 1fr);
     }
   }
 }
