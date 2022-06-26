@@ -94,7 +94,7 @@ const PageHome = () => {
                 {homePageData.acf.skills.skill_categories.map((skill_category, id) => {
                   return (
                     <li key={id}>
-                      <span className="category_name">{skill_category.category_name}:</span> {skill_category.skill_list}
+                      <span className="category-name">{skill_category.category_name}:</span> {skill_category.skill_list}
                     </li>
                   )
                 })}
