@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { appTitle, apiPath_projects, apiPath_pages } from "../global/globals";
 import Paragraph from "../components/Paragraph";
 import ProjectCard from "../components/ProjectCard";
@@ -7,6 +7,7 @@ import spaceman from "../images/spaceman-sketch.png";
 
 const PageHome = () => {
 
+  // API Variables
   const homePagePath = `${apiPath_pages}?slug=home`
   const [homePageData, setHomePageData] = useState([])
   const [isHomePageLoaded, setHomePageLoadStatus] = useState(false)
@@ -14,6 +15,10 @@ const PageHome = () => {
   const projectsPath = `${apiPath_projects}`
   const [projectsData, setProjectsData] = useState([])
   const [isProjectLoaded, setProjectLoadStatus] = useState(false)
+
+  // Email Button Clicked - use to show/hide "Copied to Clipboard" message
+  const [ showMessage, setShowMessage ] = useState(false);
+  let timeout = useRef();
 
   // On mount: 
   //    Set document title
@@ -55,6 +60,22 @@ const PageHome = () => {
     fetchData()
     
   }, [projectsPath])
+
+  // Email button - copy to clipboard
+  const copyButtonText = (e) => {
+    e.preventDefault();
+
+    // Copy button text to clipboard
+    navigator.clipboard.writeText(e.target.innerText)
+
+    // Show the copied message and then hide after a certain timeout
+    setShowMessage(true)
+    clearTimeout(timeout.current)
+    timeout.current = setTimeout(() => {
+      console.log("clicked");
+      setShowMessage(false);
+    }, 2000)
+  } 
 
   return (
     <section className="page page-home">
@@ -105,9 +126,12 @@ const PageHome = () => {
             <h2 className="screen-reader-text">Contact</h2>
             <p className="contact-message">{homePageData.acf.contact.message}</p>
             <div className="email-button">
-              <button>{homePageData.acf.contact.email}</button>
-              <div className="underline"></div>
+              <button onClick={copyButtonText}>
+                {homePageData.acf.contact.email}
+                <div className="underline"></div>
+              </button>
             </div>
+            <p className={`email-copied-message ${showMessage ? "" : "hidden"}`}>Copied to Clipboard</p>
           </section>
         </>
       :
