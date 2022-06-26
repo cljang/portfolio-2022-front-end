@@ -129,4 +129,70 @@
       }
     }
   }
+
+  .section-contact {
+    max-width: $half-width;
+    margin: 8rem auto;
+    text-align: center;
+
+    @media (min-width: $bp-laptop) {
+      margin: 13.5rem auto;
+    }
+
+    .contact-message {
+      @include use-heading-style;
+      color: $yellow;
+
+      @media (min-width: $bp-tablet) {
+        font-size: 1.5rem;
+      }
+
+      @media (min-width: $bp-laptop) {
+        font-size: 2.25rem;
+      }
+    }
+
+    .email-button {
+      display: inline-block;
+
+      button {
+        background: transparent;
+        border: none;
+        @include use-heading-style;
+        color: $white;
+        font-size: 1.125rem;
+
+        @media (min-width: $bp-phone-md) {
+          font-size: 1.5rem;
+        }
+
+        @media (min-width: $bp-tablet) {
+          font-size: 2rem;
+        }
+
+        @media (min-width: $bp-laptop) {
+          font-size: 3rem;
+        }
+      }
+
+      .underline {
+        width: 100%;
+        height: 0.25rem;
+        background-color: $yellow;
+        margin-top: 0.25rem;
+        max-width: 0;
+        transition: max-width 0.3s ease-out;
+
+        @media (min-width: $bp-laptop) {
+          height: 0.5rem;
+        }
+      }
+
+      &:hover {
+        .underline {
+          max-width: 100%;
+        }
+      }
+    }
+  }
 }

@@ -103,8 +103,11 @@ const PageHome = () => {
           </section>
           <section id="contact" className="section-contact">
             <h2 className="screen-reader-text">Contact</h2>
-            <p>{homePageData.acf.contact.message}</p>
-            <a href={`mailto:${homePageData.acf.contact.email}`}>{homePageData.acf.contact.email}</a>
+            <p className="contact-message">{homePageData.acf.contact.message}</p>
+            <div className="email-button">
+              <button>{homePageData.acf.contact.email}</button>
+              <div className="underline"></div>
+            </div>
           </section>
         </>
       :
