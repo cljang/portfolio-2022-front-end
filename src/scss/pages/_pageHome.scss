@@ -85,6 +85,10 @@
     max-width: $half-width;
     margin: 8rem auto;
 
+    @media (min-width: $bp-tablet) {
+      margin: 11rem auto;
+    }
+
     @media (min-width: $bp-laptop) {
       margin: 13.5rem auto;
     }
@@ -103,6 +107,10 @@
   .section-skills {
     max-width: 64rem;
     margin: 8rem auto;
+
+    @media (min-width: $bp-tablet) {
+      margin: 11rem auto;
+    }
 
     @media (min-width: $bp-laptop) {
       margin: 13.5rem auto;
@@ -134,6 +142,10 @@
     max-width: $half-width;
     margin: 8rem auto;
     text-align: center;
+
+    @media (min-width: $bp-tablet) {
+      margin: 11rem auto;
+    }
 
     @media (min-width: $bp-laptop) {
       margin: 13.5rem auto;
