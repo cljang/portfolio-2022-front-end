@@ -4,6 +4,7 @@ import Paragraph from "../components/Paragraph";
 import ProjectCard from "../components/ProjectCard";
 import Loading from "../components/Loading";
 import spaceman from "../images/spaceman-sketch.png";
+import TextEffect from "../components/TextEffect";
 
 const PageHome = () => {
 
@@ -83,7 +84,10 @@ const PageHome = () => {
         <>
           <section className="section-banner">
             <div className="banner-text">
-              <h1 className="banner-title">{homePageData.title.rendered}</h1>
+              {/* <h1 className="banner-title">{homePageData.title.rendered}</h1> */}
+              <h1 className="banner-title">
+                <TextEffect text={homePageData.title.rendered} />
+              </h1>
               <p className="banner-subtitle">{homePageData.acf.page_subtitle}</p>
             </div>
             <div className="banner-image">
@@ -109,7 +113,8 @@ const PageHome = () => {
             <Paragraph text={homePageData.acf.about.overview} />
           </section>
           <section className="section-skills">
-            <h2>{homePageData.acf.skills.heading}</h2>
+            {/* <h2>{homePageData.acf.skills.heading}</h2> */}
+            <h2><TextEffect text={homePageData.acf.skills.heading} /></h2>
             {homePageData.acf.skills.skill_categories && homePageData.acf.skills.skill_categories.length > 0 &&
               <ul className="skill-list">
                 {homePageData.acf.skills.skill_categories.map((skill_category, id) => {
