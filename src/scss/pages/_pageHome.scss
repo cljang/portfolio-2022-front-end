@@ -63,9 +63,14 @@
       grid-area: image;
       max-width: 25rem;
       justify-self: center;
+      max-height: 70vh;
 
-      @media (min-width: $bp-laptop) {
+      @media (min-width: $bp-desktop) {
         max-width: 35rem;
+      }
+
+      img {
+        height: 100%;
       }
     }
     
