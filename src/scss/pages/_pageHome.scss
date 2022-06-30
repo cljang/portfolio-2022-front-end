@@ -131,13 +131,13 @@
       margin: 1.5rem 0;
       font-size: 1.25rem;
 
-      li {
+      .skill {
         margin: 1rem 0;
 
         .category-name {
           @include use-heading-style;
-          // margin-right: 1rem;
-          display: block;
+          color: $white;
+          font-size: inherit;
         }
       }
     }

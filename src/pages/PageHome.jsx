@@ -4,7 +4,7 @@ import Paragraph from "../components/Paragraph";
 import ProjectCard from "../components/ProjectCard";
 import Loading from "../components/Loading";
 import spaceman from "../images/spaceman-sketch.png";
-import TextEffect from "../components/TextEffect";
+import AnimationObserver from "../components/AnimationObserver";
 
 const PageHome = () => {
 
@@ -84,13 +84,10 @@ const PageHome = () => {
         <>
           <section className="section-banner">
             <div className="banner-text">
-              {/* <h1 className="banner-title">{homePageData.title.rendered}</h1> */}
-              <h1 className="banner-title">
-                <TextEffect text={homePageData.title.rendered} />
-              </h1>
-              <p className="banner-subtitle">{homePageData.acf.page_subtitle}</p>
+              <h1 className="banner-title animate fade-up">{homePageData.title.rendered}</h1>
+              <p className="banner-subtitle animate fade-up">{homePageData.acf.page_subtitle}</p>
             </div>
-            <div className="banner-image">
+            <div className="banner-image animate fade-up">
               <img src={spaceman} alt="Spaceman illustration" />
             </div>
           </section>
@@ -102,32 +99,32 @@ const PageHome = () => {
                 <ProjectCard 
                   key={project.id}
                   project={project} 
-                  className={id%2 === 0 ? "align-left" : "align-right" }
+                  className={`animate fade-up ${id%2 === 0 ? "align-left" : "align-right" }`}
                 />
               )
             })}
           </section>
-          <section id="about" className="section-about">
+          <section id="about" className="section-about animate fade-up">
             <h2 className="screen-reader-text">About</h2>
             <p className="highlighted-overview">{homePageData.acf.about.highlighted_overview}</p>
             <Paragraph text={homePageData.acf.about.overview} />
           </section>
-          <section className="section-skills">
-            {/* <h2>{homePageData.acf.skills.heading}</h2> */}
-            <h2><TextEffect text={homePageData.acf.skills.heading} /></h2>
+          <section className="section-skills animate fade-up">
+            <h2>{homePageData.acf.skills.heading}</h2>
             {homePageData.acf.skills.skill_categories && homePageData.acf.skills.skill_categories.length > 0 &&
               <ul className="skill-list">
                 {homePageData.acf.skills.skill_categories.map((skill_category, id) => {
                   return (
-                    <li key={id}>
-                      <span className="category-name">{skill_category.category_name}:</span> {skill_category.skill_list}
+                    <li className="skill" key={id}>
+                      <h3 className="category-name">{skill_category.category_name}:</h3> 
+                      <p>{skill_category.skill_list}</p>
                     </li>
                   )
                 })}
               </ul>
             }
           </section>
-          <section id="contact" className="section-contact">
+          <section id="contact" className="section-contact animate fade-up">
             <h2 className="screen-reader-text">Contact</h2>
             <p className="contact-message">{homePageData.acf.contact.message}</p>
             <div className="email-button">
@@ -138,6 +135,7 @@ const PageHome = () => {
             </div>
             <p className={`email-copied-message ${showMessage ? "" : "hidden"}`}>Copied to Clipboard</p>
           </section>
+          <AnimationObserver />
         </>
       :
         <Loading />
