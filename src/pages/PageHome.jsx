@@ -83,11 +83,11 @@ const PageHome = () => {
       {(isHomePageLoaded && isProjectLoaded) ? 
         <>
           <section className="section-banner">
-            <div className="banner-text">
-              <h1 className="banner-title animate fade-in-up">{homePageData.title.rendered}</h1>
-              <p className="banner-subtitle animate fade-in-up">{homePageData.acf.page_subtitle}</p>
+            <div className="banner-text animate fade-in-up">
+              <h1 className="banner-title">{homePageData.title.rendered}</h1>
+              <p className="banner-subtitle">{homePageData.acf.page_subtitle}</p>
             </div>
-            <div className="banner-image animate fade-in-up">
+            <div className="banner-image animate fade-in-up fade-in-left animation-delay-500">
               <img src={spaceman} alt="Spaceman illustration" />
             </div>
           </section>
