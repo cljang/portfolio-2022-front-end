@@ -84,10 +84,10 @@ const PageHome = () => {
         <>
           <section className="section-banner">
             <div className="banner-text">
-              <h1 className="banner-title animate fade-up">{homePageData.title.rendered}</h1>
-              <p className="banner-subtitle animate fade-up">{homePageData.acf.page_subtitle}</p>
+              <h1 className="banner-title animate fade-in-up">{homePageData.title.rendered}</h1>
+              <p className="banner-subtitle animate fade-in-up">{homePageData.acf.page_subtitle}</p>
             </div>
-            <div className="banner-image animate fade-up">
+            <div className="banner-image animate fade-in-up">
               <img src={spaceman} alt="Spaceman illustration" />
             </div>
           </section>
@@ -99,17 +99,17 @@ const PageHome = () => {
                 <ProjectCard 
                   key={project.id}
                   project={project} 
-                  className={`animate fade-up ${id%2 === 0 ? "align-left" : "align-right" }`}
+                  className={`animate  ${id%2 === 0 ? "fade-in-left align-left" : "fade-in-right align-right" }`}
                 />
               )
             })}
           </section>
-          <section id="about" className="section-about animate fade-up">
+          <section id="about" className="section-about animate fade-in-up">
             <h2 className="screen-reader-text">About</h2>
             <p className="highlighted-overview">{homePageData.acf.about.highlighted_overview}</p>
             <Paragraph text={homePageData.acf.about.overview} />
           </section>
-          <section className="section-skills animate fade-up">
+          <section className="section-skills animate fade-in-up">
             <h2>{homePageData.acf.skills.heading}</h2>
             {homePageData.acf.skills.skill_categories && homePageData.acf.skills.skill_categories.length > 0 &&
               <ul className="skill-list">
@@ -124,7 +124,7 @@ const PageHome = () => {
               </ul>
             }
           </section>
-          <section id="contact" className="section-contact animate fade-up">
+          <section id="contact" className="section-contact animate fade-in-up">
             <h2 className="screen-reader-text">Contact</h2>
             <p className="contact-message">{homePageData.acf.contact.message}</p>
             <div className="email-button">
