@@ -5,7 +5,8 @@ header {
   z-index: 2;
 
   .navbar {
-    position: absolute;
+    // position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -20,7 +21,7 @@ header {
       
       a {
         display: block;
-        padding: 2.5rem 2rem;
+        padding: 1rem 2rem;
 
         .site-logo {
           width: 3rem;
@@ -28,7 +29,7 @@ header {
         }
         
         @media (min-width: $bp-laptop) {
-          padding: 1.5rem 2rem;
+          padding: 0.5rem 2rem;
           
           .site-logo {
             width: 5rem;
@@ -109,7 +110,11 @@ header {
     transition: left 0.3s ease-in-out 0.3s;
 
     nav {
-      width: calc(100% - 7rem);
+      width: calc(100% - 0.5rem);
+
+      @media (min-width: $bp-phone-md) {
+        width: calc(100% - 7rem);
+      }
 
       @media (min-width: $bp-laptop) {
         width: 60%;
@@ -196,7 +201,7 @@ header {
 
       .navbar-curtain {
         transition: width 0.3s ease-in-out 0.3s;
-        width: 1rem;
+        width: 0.5rem;
 
         @media (min-width: $bp-phone-md) {
           width: 7rem;
