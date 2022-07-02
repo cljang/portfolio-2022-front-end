@@ -12,10 +12,12 @@ function Header() {
   const handleNavButton = (e) => {
     e.preventDefault();
     dispatch(toggleNav(navOpen))
+    document.querySelector("body").classList.toggle("stop-scroll")
   }
 
   const hideNav = () => {
     dispatch(closeNav())
+    document.querySelector("body").classList.remove("stop-scroll")
   }
 
   return (

@@ -2,9 +2,6 @@ import { HashLink as NavLink } from "react-router-hash-link"
 import { useSelector, useDispatch } from "react-redux"
 import { navMainLinks } from "../global/globals";
 import { closeNav } from "../features/navOpen/navOpenSlice"
-import { Link } from "react-router-dom";
-import Logo from "./Logo";
-
 function NavMain({ reference }) {
 
   const navOpen = useSelector((state) => state.navOpen.value);
@@ -13,6 +10,7 @@ function NavMain({ reference }) {
 
   const hideNav = () => {
     dispatch(closeNav())
+    document.querySelector("body").classList.remove("stop-scroll")
   }
 
   return (

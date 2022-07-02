@@ -4,6 +4,10 @@ body {
   margin: 0;
   background-color: $background__blue;
   color: $white;
+
+  &.stop-scroll {
+    overflow: hidden;
+  }
 }
 
 .site-wrapper {
