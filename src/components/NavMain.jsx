@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom"
+import { HashLink as NavLink } from "react-router-hash-link"
 import { useSelector, useDispatch } from "react-redux"
 import { navMainLinks } from "../global/globals";
 import { closeNav } from "../features/navOpen/navOpenSlice"
@@ -20,7 +20,7 @@ function NavMain({ reference }) {
           {navMainLinks.map(link => {
             return(
               <li key={link.name}>
-                <NavLink to={link.path}
+                <NavLink smooth to={link.path}
                          onClick={hideNav}
                          tabIndex={navOpen ? 0 : -1}>
                   {link.name}

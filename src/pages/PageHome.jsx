@@ -91,7 +91,7 @@ const PageHome = () => {
               <img src={spaceman} alt="Spaceman illustration" />
             </div>
           </section>
-          <section id="work" className="section-work">
+          <section id="work" className="section-work scroll-target">
             <h2 className="screen-reader-text">Work</h2>
             {homePageData.acf.featured_projects.map((project_id, id) => {
               const project = projectsData.find((project) => project.id === project_id);
@@ -104,7 +104,7 @@ const PageHome = () => {
               )
             })}
           </section>
-          <section id="about" className="section-about animate fade-in-up">
+          <section id="about" className="section-about scroll-target animate fade-in-up">
             <h2 className="screen-reader-text">About</h2>
             <p className="highlighted-overview">{homePageData.acf.about.highlighted_overview}</p>
             <Paragraph text={homePageData.acf.about.overview} />
@@ -124,7 +124,7 @@ const PageHome = () => {
               </ul>
             }
           </section>
-          <section id="contact" className="section-contact animate fade-in-up">
+          <section id="contact" className="section-contact scroll-target animate fade-in-up">
             <h2 className="screen-reader-text">Contact</h2>
             <p className="contact-message">{homePageData.acf.contact.message}</p>
             <div className="email-button">
