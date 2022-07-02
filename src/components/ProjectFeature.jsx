@@ -63,18 +63,23 @@ function ProjectFeature({featureObj, className}) {
   return (
     <>
       {featureObj && 
-        <section className={`project-feature ${className}`}>
-          <h3 className="project-feature-heading">{featureObj.heading}</h3>
-          {featureObj.content.map((featureContentObj, id) => {
-            return (
-              <div 
-                key={id}
-                className="project-feature-content"
-              >
-                {renderFeatureContent(featureContentObj)}
-              </div>
-            );
-          })}
+        <section className={`feature ${className}`}>
+          <div className="feature-overview">
+            <h3 className="feature-heading">{featureObj.heading}</h3>
+            <Paragraph text={featureObj.description}/>
+          </div>
+          <div className="feature-content">
+            {featureObj.content.map((featureContentObj, id) => {
+              return (
+                <div
+                  key={id}
+                  className="feature-content-item"
+                >
+                  {renderFeatureContent(featureContentObj)}
+                </div>
+              );
+            })}
+          </div>
         </section>
       }
     </>

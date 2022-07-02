@@ -65,8 +65,8 @@ const PageProject = () => {
               {projectData.acf.featured_image &&
                 <ResponsivePicture
                   className="featured-image"
-                  imageArray={projectData.acf.featured_image.image_sources}
-                  alt={projectData.acf.featured_image.alt}
+                  imageArray={projectData.acf.featured_image}
+                  alt={`${projectData.title.rendered} featured image`}
                 />
               }
             </header>
@@ -89,13 +89,6 @@ const PageProject = () => {
                 }
               </div>
               <div className="right-column">
-                {
-                  projectData.acf.duration &&
-                  <section>
-                    <h3>Duration</h3>
-                    <p>{projectData.acf.duration}</p>
-                  </section>
-                }
                 {
                   projectData.acf.collaborators &&
                   <section className="project-collaborators-section">

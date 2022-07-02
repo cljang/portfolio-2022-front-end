@@ -11,8 +11,8 @@ function ProjectCard({project, className}) {
       >
         <ResponsivePicture 
           className="project-image"
-          imageArray={project.acf.featured_image.image_sources}
-          alt={project.acf.featured_image.alt}
+          imageArray={project.acf.featured_image}
+          alt={`${project.title.rendered} featured image`}
           limitSteps={2}
         />
         <div className="project-text">
