@@ -18,8 +18,8 @@ function AnimationObserver() {
     })
 
     const options = {
-      threshold: 0.3,
-      rootMargin: "0px 0px 16px 0px",
+      // threshold: 0.3,
+      rootMargin: "0px 0px -100px",
     }
     
     const observer = new IntersectionObserver(entries => {
@@ -30,16 +30,16 @@ function AnimationObserver() {
           // Translate direction
           let translateX = 0;
           if (classes.includes('fade-in-left')) {
-            translateX = ["20rem", 0];
+            translateX = ["10rem", 0];
           } else if (classes.includes('fade-in-right')) {
-            translateX = ["-20rem", 0];
+            translateX = ["-10rem", 0];
           }
 
           let translateY = 0;
           if (classes.includes('fade-in-up')) {
-            translateY = ["20rem", 0];
+            translateY = ["10rem", 0];
           } else if (classes.includes('fade-in-down')) {
-            translateY = ["-20rem", 0];
+            translateY = ["-10rem", 0];
           }
 
           // Animation Duration

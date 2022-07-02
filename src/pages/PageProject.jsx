@@ -7,6 +7,7 @@ import Loading from "../components/Loading";
 import Paragraph from "../components/Paragraph";
 import ResponsivePicture from "../components/ResponsivePicture";
 import ProjectFeature from "../components/ProjectFeature";
+import AnimationObserver from "../components/AnimationObserver";
 
 const PageProject = () => {
   const { project_slug } = useParams();
@@ -53,18 +54,20 @@ const PageProject = () => {
         {isProjectLoaded ? 
           <>
             <header className="project-header">
-              {projectData.acf.year && 
-                <p className="project-year">{projectData.acf.year}</p>
-              }
-              {projectData.title.rendered && 
-                <h1>{projectData.title.rendered}</h1>
-              }
-              {projectData.acf.subtitle && 
-                <p>{projectData.acf.subtitle}</p>
-              }
+              <div className="project-header-text animate fade-in-down">
+                {projectData.acf.year &&
+                  <p className="project-year">{projectData.acf.year}</p>
+                }
+                {projectData.title.rendered &&
+                  <h1>{projectData.title.rendered}</h1>
+                }
+                {projectData.acf.subtitle &&
+                  <p>{projectData.acf.subtitle}</p>
+                }
+              </div>
               {projectData.acf.featured_image &&
                 <ResponsivePicture
-                  className="featured-image"
+                  className="featured-image animate fade-in-up animation-delay-500"
                   imageArray={projectData.acf.featured_image}
                   alt={`${projectData.title.rendered} featured image`}
                 />
@@ -72,7 +75,7 @@ const PageProject = () => {
             </header>
             <section className="project-details-section">
               <h2 className="screen-reader-text">Project Details</h2>
-              <div className="left-column">
+              <div className="left-column animate fade-in-right">
                 {
                   projectData.acf.overview &&
                   <section>
@@ -88,7 +91,7 @@ const PageProject = () => {
                   </section>
                 }
               </div>
-              <div className="right-column">
+              <div className="right-column animate fade-in-left animation-delay-500">
                 {
                   projectData.acf.collaborators &&
                   <section className="project-collaborators-section">
@@ -125,12 +128,12 @@ const PageProject = () => {
               </div>
             </section>
             <section className="project-features-section">
-              <h2>Features</h2>
+              <h2 className="animate fade-in-right">Features</h2>
               {projectData.acf.features && projectData.acf.features.map((featureObj,id) => {
-                return <ProjectFeature key={id} featureObj={featureObj} className={id%2 === 0 ? "align-left" : "align-right"} />
+                return <ProjectFeature key={id} featureObj={featureObj} className={`animate ${id%2 === 0 ? "align-left fade-in-right" : "align-right fade-in-left"}`} />
               })}
             </section>
-            
+            <AnimationObserver />
           </>
         :
           <Loading />
