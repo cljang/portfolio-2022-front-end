@@ -20,8 +20,8 @@ function Header() {
 
   return (
     <header>
-      <div className="navbar">
-        <div className="navbar-logo">
+      <div className={"navbar" + (navOpen ? " navbar-toggled" : "")}>
+        <div className={"navbar-logo" + (navOpen ? " navbar-toggled" : "")}>
           <Link 
             to="/"
             onClick={hideNav}

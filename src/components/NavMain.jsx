@@ -2,6 +2,8 @@ import { HashLink as NavLink } from "react-router-hash-link"
 import { useSelector, useDispatch } from "react-redux"
 import { navMainLinks } from "../global/globals";
 import { closeNav } from "../features/navOpen/navOpenSlice"
+import { Link } from "react-router-dom";
+import Logo from "./Logo";
 
 function NavMain({ reference }) {
 
@@ -20,16 +22,20 @@ function NavMain({ reference }) {
           {navMainLinks.map(link => {
             return(
               <li key={link.name}>
-                <NavLink smooth to={link.path}
-                         onClick={hideNav}
-                         tabIndex={navOpen ? 0 : -1}>
+                <NavLink 
+                  to={link.path}
+                  onClick={hideNav}
+                  tabIndex={navOpen ? 0 : -1}
+                >
                   {link.name}
+                  <div className="underline"></div>
                 </NavLink>
               </li>
             )
             })}
         </ul>
       </nav>
+      <div className="navbar-curtain"></div>
     </div>
   )
 }

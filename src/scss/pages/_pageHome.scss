@@ -190,26 +190,28 @@
         @media (min-width: $bp-laptop) {
           font-size: 3rem;
         }
-      }
-
-      .underline {
-        width: 100%;
-        height: 0.25rem;
-        background-color: $yellow;
-        margin-top: 0.25rem;
-        max-width: 0;
-        transition: max-width 0.3s ease-out;
-
-        @media (min-width: $bp-laptop) {
-          height: 0.5rem;
-        }
-      }
-
-      &:hover {
+        
         .underline {
-          max-width: 100%;
+          width: 100%;
+          height: 0.25rem;
+          background-color: $yellow;
+          margin-top: 0.25rem;
+          max-width: 0;
+          transition: max-width 0.3s ease-out;
+  
+          @media (min-width: $bp-laptop) {
+            height: 0.5rem;
+          }
+        }
+  
+        &:hover,
+        &:focus {
+          .underline {
+            max-width: 100%;
+          }
         }
       }
+
     }
 
     .email-copied-message {
