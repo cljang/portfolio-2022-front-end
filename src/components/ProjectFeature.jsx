@@ -64,11 +64,11 @@ function ProjectFeature({featureObj, className}) {
     <>
       {featureObj && 
         <section className={`feature ${className}`}>
-          <div className="feature-overview">
-            <h3 className="feature-heading">{featureObj.heading}</h3>
-            <Paragraph text={featureObj.description}/>
-          </div>
-          <div className="feature-content">
+          {(featureObj.heading || featureObj.description) && <div className="feature-overview">
+            {featureObj.heading && <h3 className="feature-heading">{featureObj.heading}</h3>}
+            {featureObj.description && <Paragraph text={featureObj.description}/>}
+          </div>}
+          {featureObj.content && <div className="feature-content">
             {featureObj.content.map((featureContentObj, id) => {
               return (
                 <div
@@ -79,7 +79,7 @@ function ProjectFeature({featureObj, className}) {
                 </div>
               );
             })}
-          </div>
+          </div>}
         </section>
       }
     </>
