@@ -8,7 +8,7 @@ export const apiPath_pages = `${apiPath}/pages`
 export const navMainLinks = [
   {
     name: "Home",
-    path: "/"
+    path: "/#home"
   },
   {
     name: "Work",

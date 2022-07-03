@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux"
 import { setProjectData, setLoaded } from "../features/projectData/projectDataSlice";
 import { apiPath_projects } from "../global/globals";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashLink as Link } from "react-router-hash-link";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import PageHome from "../pages/PageHome";
@@ -32,10 +33,10 @@ function AppRouter() {
 
   return (
     <BrowserRouter basename="/">
-      <Link to="#site-main" className="screen-reader-text">Skip to content</Link>
+      <Link to="#home" className="screen-reader-text">Skip to content</Link>
       <div className="site-wrapper">
         <Header />
-        <main id="site-main">
+        <main id="home">
           <Routes>
               <Route path="/" element={<PageHome />} />
               <Route path="/projects/:project_slug" element={<PageProject />} />

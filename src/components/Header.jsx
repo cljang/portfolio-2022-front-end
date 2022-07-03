@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import { HashLink as Link } from "react-router-hash-link";
 import Logo from "./Logo";
 import NavMain from "./NavMain";
 import { useSelector, useDispatch } from "react-redux"
@@ -25,8 +26,9 @@ function Header() {
       <div className={"navbar" + (navOpen ? " navbar-toggled" : "")}>
         <div className={"navbar-logo" + (navOpen ? " navbar-toggled" : "")}>
           <Link 
-            to="/"
+            to="/#home"
             onClick={hideNav}
+            smooth
           >
             <Logo />
             <span className="screen-reader-text">Clayton Jang</span>
