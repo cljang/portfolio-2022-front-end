@@ -17,9 +17,11 @@
 
   h2 {
     font-size: 2.25rem;
+    margin-bottom: 2.25rem;
 
     @media (min-width: $bp-laptop) {
       font-size: 3rem;
+      margin-bottom: 3rem;
     }
   }
 
@@ -33,6 +35,10 @@
 
   .content-wrapper > section {
     margin: 10rem 0;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
   }
 
   .project-header {
@@ -60,7 +66,7 @@
     @media (min-width: $bp-laptop) {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
-      grid-template-areas: ". left left left left left left left right right right right";
+      grid-template-areas: ". left left left left left left right right right right .";
       gap: 2rem;
 
       .left-column {
@@ -87,7 +93,7 @@
     }
 
     @media (min-width: $bp-desktop-lg) {
-      grid-template-areas: ". left left left left left left left . right right right";
+      grid-template-areas: ". left left left left left left . right right right .";
     }
   }
 
@@ -119,44 +125,82 @@
 
 
   .project-features-section {
-    @media (min-width: $bp-laptop) {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 2rem;
-    }
-
+    
     .project-features-header {
-      grid-column: 2/12;
+      // grid-column: 2/12;
       text-align: center;
     }
     
     .feature {
       margin-bottom: 6rem;
-
+      
       &:last-of-type {
         margin-bottom: 0;
       }
+
+      @media (min-width: $bp-laptop) {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 2rem;
+        
+        .feature-overview {
+          position: sticky;
+          top: 2rem;
+          align-self: start;          
+        }
+        
+        &.align-left {
+          grid-template-areas: "left left left left right right right right right right right right";
+
+          .feature-overview {
+            grid-area: left;
+          }
+    
+          .feature-content {
+            grid-area: right;
+          }
+        }
+    
+        &.align-right {
+          grid-template-areas: "left left left left left left left left right right right right";
+          
+          .feature-overview {
+            grid-area: right;
+            order: 1;
+          }
+    
+          .feature-content {
+            grid-area: left;
+          }
+        }
+      }
+
+      @media (min-width: $bp-desktop-lg) {
+        &.align-left {
+          grid-template-areas: ". left left left right right right right right right right .";
+        }
+    
+        &.align-right {
+          grid-template-areas: ". left left left left left left left right right right .";
+        }
+      }
     }
 
-    .align-left {
-      grid-column: 2/9;
-    }
-
-    .align-right {
-      grid-column: 5/12;
-    }
 
     .feature-content {
 
       &-item {
         margin-bottom: 2rem;
+      
+        &:last-of-type {
+          margin-bottom: 0;
+        }
       }
     }
   }
 
   .other-projects-section {
     .other-projects-header {
-      margin-bottom: 2.25rem;
       text-align: center;
     }
 
@@ -185,7 +229,7 @@
         "left right"
       ;
       grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
+      gap: 0 2rem;
 
       .other-projects-header {
         grid-area: heading;

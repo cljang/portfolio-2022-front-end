@@ -67,7 +67,7 @@ const PageProject = () => {
           <>
             <AnimationObserver>
               <div className="content-wrapper">
-                <header className="project-header">
+                <section className="project-header">
                   <div className="project-header-text animate fade-in-down">
                     {projectData.acf.year &&
                       <p className="project-year">{projectData.acf.year}</p>
@@ -86,7 +86,7 @@ const PageProject = () => {
                       alt={`${projectData.title.rendered} featured image`}
                     />
                   }
-                </header>
+                </section>
                 <section className="project-details-section">
                   <h2 className="screen-reader-text">Project Details</h2>
                   <div className="left-column animate fade-in-right">
@@ -148,7 +148,7 @@ const PageProject = () => {
                   })}
                 </section>
                 <section className="other-projects-section">
-                  <h2 className="other-projects-header">More Projects</h2>
+                  <h2 className="other-projects-header animate fade-in-up">More Projects</h2>
                   {otherProjectsData.map((project, id) => {
                     return (
                       <article
