@@ -1,7 +1,10 @@
 import { useEffect, useRef } from "react";
 import anime from "animejs/lib/anime.min.js";
 
-function AnimationObserver({id}) {
+function AnimationObserver({children}) {
+
+  const animRef = useRef();
+
   // Create an empty array of refs for IntersectionObserver
   const refs = useRef([]);
 
@@ -12,7 +15,7 @@ function AnimationObserver({id}) {
     refs.current = [];
     
     // Add all refs with the target class to the refs array
-    const targetElements = document.querySelectorAll(`.animate`);
+    const targetElements = animRef.current.querySelectorAll(`.animate`);
     targetElements.forEach((element, index) => {
       refs.current[index] = element;
       element.style = {};
@@ -83,9 +86,13 @@ function AnimationObserver({id}) {
       observer.observe(ref);
     })
 
-  }, [id])
+  }, [children])
 
-  return (null)
+  return (
+    <div ref={animRef} className="animation-observer">
+      {children}
+    </div>
+  )
 }
 
 export default AnimationObserver
