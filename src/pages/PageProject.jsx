@@ -143,9 +143,13 @@ const PageProject = () => {
                 </section>
                 <section className="project-features-section">
                   <h2 className="project-features-header animate fade-in-right">Features</h2>
-                  {projectData.acf.features && projectData.acf.features.map((featureObj,id) => {
-                    return <ProjectFeature key={id} featureObj={featureObj} className={`animate ${id%2 === 0 ? "align-left fade-in-right" : "align-right fade-in-left"}`} />
-                  })}
+                  {projectData.acf.features ? 
+                    projectData.acf.features.map((featureObj,id) => {
+                      return <ProjectFeature key={id} featureObj={featureObj} className={`animate ${id%2 === 0 ? "align-left fade-in-right" : "align-right fade-in-left"}`} />
+                    }) 
+                  : 
+                    <p className="coming-soon animate fade-in-up">Coming soon.</p>
+                  }
                 </section>
                 <section className="other-projects-section">
                   <h2 className="other-projects-header animate fade-in-up">More Projects</h2>

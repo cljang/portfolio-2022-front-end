@@ -206,7 +206,6 @@
 
 
     .feature-content {
-
       &-item {
         margin-bottom: 2rem;
       
@@ -214,6 +213,10 @@
           margin-bottom: 0;
         }
       }
+    }
+    
+    .coming-soon {
+      text-align: center;
     }
   }
 

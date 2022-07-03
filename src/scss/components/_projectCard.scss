@@ -16,6 +16,11 @@
 
     .project-subtitle {
       font-size: 0.875rem;
+      font-family: $heading-font;
+
+      @media (min-width: $bp-laptop) {
+        font-size: 1.125rem;
+      }
     }
 
     .project-link {
