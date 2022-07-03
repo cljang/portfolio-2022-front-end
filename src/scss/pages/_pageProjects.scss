@@ -3,7 +3,35 @@
 
 .page-project {
 
-  & > section {
+  h1 {
+    font-size: 2.25rem;
+    
+    @media (min-width: $bp-laptop) {
+      font-size: 3rem;
+    }
+
+    @media (min-width: $bp-desktop) {
+      font-size: 4.5rem;
+    }
+  }
+
+  h2 {
+    font-size: 2.25rem;
+
+    @media (min-width: $bp-laptop) {
+      font-size: 3rem;
+    }
+  }
+
+  h3 {
+    font-size: 1.5rem;
+
+    @media (min-width: $bp-desktop) {
+      font-size: 2.25rem;
+    }
+  }
+
+  .content-wrapper > section {
     margin: 10rem 0;
   }
 
@@ -32,8 +60,8 @@
     @media (min-width: $bp-laptop) {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
-      grid-template-areas: ". left left left left left left left right right right .";
-      gap: 1rem;
+      grid-template-areas: ". left left left left left left left right right right right";
+      gap: 2rem;
 
       .left-column {
         grid-area: left;
@@ -59,7 +87,7 @@
     }
 
     @media (min-width: $bp-desktop-lg) {
-      grid-template-areas: ". left left left left left left left . right right .";
+      grid-template-areas: ". left left left left left left left . right right right";
     }
   }
 
@@ -94,11 +122,12 @@
     @media (min-width: $bp-laptop) {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
-      gap: 1rem;
+      gap: 2rem;
     }
 
-    h2 {
+    .project-features-header {
       grid-column: 2/12;
+      text-align: center;
     }
     
     .feature {
@@ -126,10 +155,52 @@
   }
 
   .other-projects-section {
+    .other-projects-header {
+      margin-bottom: 2.25rem;
+      text-align: center;
+    }
+
     .project-card {
+      &:first-of-type {
+        margin-top: 0;
+      }
+
+      .project-link {
+        text-decoration: none;
+      }
+
+      .project-subtitle {
+        color: $white;
+      }
 
       @media (min-width: $bp-laptop) {
         display: block;
+      }
+    }
+
+    @media (min-width: $bp-laptop) {
+      display: grid;
+      grid-template-areas: 
+        "heading heading"
+        "left right"
+      ;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+
+      .other-projects-header {
+        grid-area: heading;
+      }
+
+      .align-left {
+        grid-area: left;
+      }
+
+      .align-right {
+        grid-area: right;
+      }
+
+      .project-card {
+        margin: 0;
       }
     }
   }

@@ -66,111 +66,113 @@ const PageProject = () => {
         {isProjectLoaded ? 
           <>
             <AnimationObserver>
-              <header className="project-header">
-                <div className="project-header-text animate fade-in-down">
-                  {projectData.acf.year &&
-                    <p className="project-year">{projectData.acf.year}</p>
+              <div className="content-wrapper">
+                <header className="project-header">
+                  <div className="project-header-text animate fade-in-down">
+                    {projectData.acf.year &&
+                      <p className="project-year">{projectData.acf.year}</p>
+                    }
+                    {projectData.title.rendered &&
+                      <h1>{projectData.title.rendered}</h1>
+                    }
+                    {projectData.acf.subtitle &&
+                      <p>{projectData.acf.subtitle}</p>
+                    }
+                  </div>
+                  {projectData.acf.featured_image &&
+                    <ResponsivePicture
+                      className="featured-image animate fade-in-up animation-delay-500"
+                      imageArray={projectData.acf.featured_image}
+                      alt={`${projectData.title.rendered} featured image`}
+                    />
                   }
-                  {projectData.title.rendered &&
-                    <h1>{projectData.title.rendered}</h1>
-                  }
-                  {projectData.acf.subtitle &&
-                    <p>{projectData.acf.subtitle}</p>
-                  }
-                </div>
-                {projectData.acf.featured_image &&
-                  <ResponsivePicture
-                    className="featured-image animate fade-in-up animation-delay-500"
-                    imageArray={projectData.acf.featured_image}
-                    alt={`${projectData.title.rendered} featured image`}
-                  />
-                }
-              </header>
-              <section className="project-details-section">
-                <h2 className="screen-reader-text">Project Details</h2>
-                <div className="left-column animate fade-in-right">
-                  {
-                    projectData.acf.overview &&
-                    <section>
-                      <h3>Overview</h3>
-                      <Paragraph text={projectData.acf.overview}/>
-                    </section>
-                  }
-                  {
-                    projectData.acf.technologies &&
-                    <section>
-                      <h3>Technologies</h3>
-                      <p>{projectData.acf.technologies}</p>
-                    </section>
-                  }
-                </div>
-                <div className="right-column animate fade-in-left animation-delay-500">
-                  {
-                    projectData.acf.collaborators &&
-                    <section className="project-collaborators-section">
-                      <h3>Collaborators</h3>
-                      <ul>
-                        {projectData.acf.collaborators.map((collaborator, id) => {
-                          return (
-                            <li key={id}>
-                              <a href={collaborator.link} className="collaborator-link" >
-                                {collaborator.name} <FaLink className="link-icon" aria-hidden />
-                              </a>
-                            </li>
-                          )
-                        })}
-                      </ul>
-                    </section>
-                  }
-                  {
-                    (projectData.acf.live_site || projectData.acf.github_repo) &&
-                    <section className="project-links-section">
-                      <h3>View the Project</h3>
-                      {projectData.acf.live_site && 
-                        <a href={projectData.acf.live_site} className="project-link">
-                          <BsGlobe title="Live Site" className="link-icon live-site-icon" />
-                        </a>
-                      }
-                      {projectData.acf.github_repo && 
-                        <a href={projectData.acf.github_repo} className="project-link">
-                          <FaGithub title="GitHub Repository" className="link-icon github-icon" />
-                        </a>
-                      }
-                    </section>
-                  }
-                </div>
-              </section>
-              <section className="project-features-section">
-                <h2 className="animate fade-in-right">Features</h2>
-                {projectData.acf.features && projectData.acf.features.map((featureObj,id) => {
-                  return <ProjectFeature key={id} featureObj={featureObj} className={`animate ${id%2 === 0 ? "align-left fade-in-right" : "align-right fade-in-left"}`} />
-                })}
-              </section>
-              <section className="other-projects-section">
-                <h2>More Projects</h2>
-                {otherProjectsData.map((project, id) => {
-                  return (
-                    <article 
-                      className={`project-card animate ${id%2 === 0 ? "fade-in-left align-left" : "fade-in-right align-right" }`}
-                      // id={project.slug}
-                      key={project.id}
-                    >
-                      <Link to={`/projects/${project.slug}`} className="project-link">
-                        <ResponsivePicture 
-                          className="project-image"
-                          imageArray={project.acf.featured_image}
-                          alt={`${project.title.rendered} featured image`}
-                          limitSteps={2}
-                        />
-                        <div className="project-text">
-                          <h3 className="project-title">{project.title.rendered}</h3>
-                          <p className="project-subtitle">{project.acf.subtitle}</p>
-                        </div>
-                      </Link> 
-                    </article>
-                  )
-                })}
-              </section>
+                </header>
+                <section className="project-details-section">
+                  <h2 className="screen-reader-text">Project Details</h2>
+                  <div className="left-column animate fade-in-right">
+                    {
+                      projectData.acf.overview &&
+                      <section>
+                        <h3>Overview</h3>
+                        <Paragraph text={projectData.acf.overview}/>
+                      </section>
+                    }
+                    {
+                      projectData.acf.technologies &&
+                      <section>
+                        <h3>Technologies</h3>
+                        <p>{projectData.acf.technologies}</p>
+                      </section>
+                    }
+                  </div>
+                  <div className="right-column animate fade-in-left animation-delay-500">
+                    {
+                      projectData.acf.collaborators &&
+                      <section className="project-collaborators-section">
+                        <h3>Collaborators</h3>
+                        <ul>
+                          {projectData.acf.collaborators.map((collaborator, id) => {
+                            return (
+                              <li key={id}>
+                                <a href={collaborator.link} className="collaborator-link" >
+                                  {collaborator.name} <FaLink className="link-icon" aria-hidden />
+                                </a>
+                              </li>
+                            )
+                          })}
+                        </ul>
+                      </section>
+                    }
+                    {
+                      (projectData.acf.live_site || projectData.acf.github_repo) &&
+                      <section className="project-links-section">
+                        <h3>View the Project</h3>
+                        {projectData.acf.live_site &&
+                          <a href={projectData.acf.live_site} className="project-link">
+                            <BsGlobe title="Live Site" className="link-icon live-site-icon" />
+                          </a>
+                        }
+                        {projectData.acf.github_repo &&
+                          <a href={projectData.acf.github_repo} className="project-link">
+                            <FaGithub title="GitHub Repository" className="link-icon github-icon" />
+                          </a>
+                        }
+                      </section>
+                    }
+                  </div>
+                </section>
+                <section className="project-features-section">
+                  <h2 className="project-features-header animate fade-in-right">Features</h2>
+                  {projectData.acf.features && projectData.acf.features.map((featureObj,id) => {
+                    return <ProjectFeature key={id} featureObj={featureObj} className={`animate ${id%2 === 0 ? "align-left fade-in-right" : "align-right fade-in-left"}`} />
+                  })}
+                </section>
+                <section className="other-projects-section">
+                  <h2 className="other-projects-header">More Projects</h2>
+                  {otherProjectsData.map((project, id) => {
+                    return (
+                      <article
+                        className={`project-card animate ${id%2 === 0 ? "fade-in-right align-left" : "fade-in-left align-right" }`}
+                        // id={project.slug}
+                        key={project.id}
+                      >
+                        <Link to={`/projects/${project.slug}`} className="project-link">
+                          <ResponsivePicture
+                            className="project-image"
+                            imageArray={project.acf.featured_image}
+                            alt={`${project.title.rendered} featured image`}
+                            limitSteps={2}
+                          />
+                          <div className="project-text">
+                            <h3 className="project-title">{project.title.rendered}</h3>
+                            <p className="project-subtitle">{project.acf.subtitle}</p>
+                          </div>
+                        </Link>
+                      </article>
+                    )
+                  })}
+                </section>
+              </div>
             </AnimationObserver>
           </>
         :
