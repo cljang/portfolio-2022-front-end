@@ -1,0 +1,24 @@
+@use "../global/variables" as *;
+@use "../global/mixins" as *;
+
+.page-404 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  .page-content {
+    max-width: 30rem;
+    
+    a {
+      @include use-heading-style;
+      background-color: $background__blue-dark;
+      padding: 1rem 2rem;
+      display: block;
+      max-width: 16rem;
+      margin: 2rem auto 0;
+      border-radius: 2rem;
+      text-decoration: none;
+    }
+  }
+}

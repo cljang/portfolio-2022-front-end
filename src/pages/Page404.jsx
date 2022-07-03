@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { appTitle } from "../global/globals";
 
 const Page404 = () => {
@@ -13,7 +14,11 @@ const Page404 = () => {
 
   return (
       <section className="page page-404">
-        <h2>404</h2>
+        <div className="page-content">
+          <h1>404</h1>
+          <p>Seems like you got a bit lost, this page doesn't exist.</p>
+          <Link to="/">Back to Home Page</Link>
+        </div>
       </section>
   );
 
