@@ -73,10 +73,10 @@ const PageProject = () => {
                       <p className="project-year">{projectData.acf.year}</p>
                     }
                     {projectData.title.rendered &&
-                      <h1>{projectData.title.rendered}</h1>
+                      <h1 className="project-name">{projectData.title.rendered}</h1>
                     }
                     {projectData.acf.subtitle &&
-                      <p>{projectData.acf.subtitle}</p>
+                      <p className="project-subtitle">{projectData.acf.subtitle}</p>
                     }
                   </div>
                   {projectData.acf.featured_image &&

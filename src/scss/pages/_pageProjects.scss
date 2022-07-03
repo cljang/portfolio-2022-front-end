@@ -44,6 +44,24 @@
   .project-header {
     .project-year {
       @include use-heading-style;
+      font-size: 1.5rem;
+      margin-bottom: 6.25rem;
+
+      @media (min-width: $bp-desktop) {
+        font-size: 2rem;
+      }
+    }
+
+    .project-name {
+      margin-bottom: 0.25rem;
+    }
+
+    .project-subtitle {
+      font-family: $heading-font;
+      
+      @media (min-width: $bp-desktop) {
+        font-size: 1.5rem;
+      }
     }
     
     

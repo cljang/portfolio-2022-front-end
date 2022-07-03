@@ -68,7 +68,7 @@ const PageHome = () => {
         <>
           <AnimationObserver>
             <section className="section-banner">
-              <div className="banner-text animate fade-in-up">
+              <div className="banner-text animate fade-in-up animation-delay-250">
                 <h1 className="banner-title">{homePageData.title.rendered}</h1>
                 <p className="banner-subtitle">{homePageData.acf.page_subtitle}</p>
               </div>
