@@ -8,7 +8,7 @@ export const navOpenSlice = createSlice({
   name: "navOpen",
   initialState,
   reducers: {
-    openNav: (state,) => {
+    openNav: (state) => {
       state.value = true;
     },
     closeNav: (state) => {

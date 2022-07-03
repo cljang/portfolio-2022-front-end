@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { appTitle, apiPath_projects, apiPath_pages } from "../global/globals";
+import { useSelector } from "react-redux"
+import { appTitle, apiPath_pages } from "../global/globals";
 import Paragraph from "../components/Paragraph";
 import ProjectCard from "../components/ProjectCard";
 import Loading from "../components/Loading";
@@ -13,9 +14,9 @@ const PageHome = () => {
   const [homePageData, setHomePageData] = useState([])
   const [isHomePageLoaded, setHomePageLoadStatus] = useState(false)
 
-  const projectsPath = `${apiPath_projects}`
-  const [projectsData, setProjectsData] = useState([])
-  const [isProjectLoaded, setProjectLoadStatus] = useState(false)
+  // All Projects Data
+  const projectsData = useSelector((state) => state.project.projects)
+  const isProjectsDataLoaded = useSelector((state) => state.project.loaded)
 
   // Email Button Clicked - use to show/hide "Copied to Clipboard" message
   const [ showMessage, setShowMessage ] = useState(false);
@@ -45,23 +46,6 @@ const PageHome = () => {
     
   }, [homePagePath])
 
-  // Load Project Data
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(projectsPath)
-      if ( response.ok ) {
-        const data = await response.json()
-        setProjectsData(data)
-        setProjectLoadStatus(true)
-
-      } else {
-        setProjectLoadStatus(false)
-      }
-    }
-    fetchData()
-    
-  }, [projectsPath])
-
   // Email button - copy to clipboard
   const copyButtonText = (e) => {
     e.preventDefault();
@@ -80,7 +64,7 @@ const PageHome = () => {
 
   return (
     <section className="page page-home">
-      {(isHomePageLoaded && isProjectLoaded) ? 
+      {(isHomePageLoaded && isProjectsDataLoaded) ? 
         <>
           <section className="section-banner">
             <div className="banner-text animate fade-in-up">

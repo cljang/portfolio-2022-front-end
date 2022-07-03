@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux"
 import { useParams, useNavigate } from "react-router-dom";
-import { appTitle, apiPath_projects } from "../global/globals";
+import { appTitle } from "../global/globals";
 import { FaGithub, FaExternalLinkAlt as FaLink } from "react-icons/fa";
 import { BsGlobe } from "react-icons/bs"
 import Loading from "../components/Loading";
@@ -8,12 +9,18 @@ import Paragraph from "../components/Paragraph";
 import ResponsivePicture from "../components/ResponsivePicture";
 import ProjectFeature from "../components/ProjectFeature";
 import AnimationObserver from "../components/AnimationObserver";
+import ProjectCard from "../components/ProjectCard";
 
 const PageProject = () => {
   const { project_slug } = useParams();
   
-  const projectPath = `${apiPath_projects}?slug=${project_slug}&_embed`
+  // All Projects Data
+  const projectsData = useSelector((state) => state.project.projects)
+  const isProjectsDataLoaded = useSelector((state) => state.project.loaded)
+
+  // Project Data
   const [projectData, setProjectData] = useState([])
+  const [otherProjectsData, setOtherProjectsData] = useState([])
   const [isProjectLoaded, setProjectLoadStatus] = useState(false)
 
   const navigate = useNavigate();
@@ -25,28 +32,34 @@ const PageProject = () => {
     window.scrollTo(0, 0);
   }, [])
 
+  // Get the current projectData and otherProjectData
   useEffect(() => {
-    const fetchData = async () => {
-        const response = await fetch(projectPath)
-        if ( response.ok ) {
-          const data = await response.json()
-
-          // Ensure data is received, if not redirect to 404
-          if (data && data.length > 0 ) {
-            setProjectData(data[0])
-            setProjectLoadStatus(true)
-            document.title = `${data[0].title.rendered} - ${appTitle}`;
-          } else {
-            navigate("/404");
-          }
-
+    // Ensure data is loaded, if not redirect to 404
+    if (isProjectsDataLoaded && projectsData.length > 0 ) {
+      // Find the current project based on the project_slug param and save it in the projectData state
+      // Record all other projects in a separate array
+      let thisProject;
+      let otherProjects = [];
+      projectsData.forEach((project) => {
+        if (project.slug === project_slug) {
+          thisProject = project;
         } else {
-          setProjectLoadStatus(false)
+          otherProjects.push(project);
         }
+      })
+
+      if (thisProject) {
+        // Save the current project in the projectData state
+        // Save an array of 2 other projects in the otherProjectsData State
+        setProjectData(thisProject)
+        setOtherProjectsData(otherProjects.slice(0,2))
+        setProjectLoadStatus(true)
+        document.title = `${thisProject.title.rendered} - ${appTitle}`;
+      } else {
+        navigate("/404");
+      }
     }
-    fetchData()
-    
-  }, [projectPath, navigate])
+  }, [isProjectsDataLoaded, projectsData, project_slug, navigate])
 
   return (
     <>
@@ -131,6 +144,18 @@ const PageProject = () => {
               <h2 className="animate fade-in-right">Features</h2>
               {projectData.acf.features && projectData.acf.features.map((featureObj,id) => {
                 return <ProjectFeature key={id} featureObj={featureObj} className={`animate ${id%2 === 0 ? "align-left fade-in-right" : "align-right fade-in-left"}`} />
+              })}
+            </section>
+            <section className="other-projects-section">
+              <h2>More Projects</h2>
+              {otherProjectsData.map((project, id) => {
+                return (
+                  <ProjectCard
+                    key={project.id}
+                    project={project}
+                    className={`animate ${id%2 === 0 ? "fade-in-left align-left" : "fade-in-right align-right" }`}
+                  />
+                )
               })}
             </section>
             <AnimationObserver />
