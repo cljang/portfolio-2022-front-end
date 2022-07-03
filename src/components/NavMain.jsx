@@ -24,6 +24,7 @@ function NavMain({ reference }) {
                   to={link.path}
                   onClick={hideNav}
                   tabIndex={navOpen ? 0 : -1}
+                  smooth
                 >
                   {link.name}
                   <div className="underline"></div>

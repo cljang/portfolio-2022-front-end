@@ -1,14 +1,40 @@
-// import { Link } from "react-router-dom";
+import { useRef, useEffect } from "react";
 import { HashLink as Link } from "react-router-hash-link";
-import Logo from "./Logo";
-import NavMain from "./NavMain";
 import { useSelector, useDispatch } from "react-redux"
 import { closeNav, toggleNav } from "../features/navOpen/navOpenSlice";
+import Logo from "./Logo";
+import NavMain from "./NavMain";
 
 function Header() {
   
   const navOpen = useSelector((state) => state.navOpen.value);
   const dispatch = useDispatch();
+
+  const headerRef = useRef();
+  const scrollPosition = useRef();
+
+  useEffect(() => {
+    document.addEventListener('scroll', (e) => {
+      const threshold = 200;
+      const yPos = window.scrollY;
+      
+      if (yPos >= threshold) {
+        headerRef.current.classList.add("background");
+      } else {
+        headerRef.current.classList.remove("background");
+      }
+
+      if (scrollPosition.current) {
+        if (yPos < scrollPosition.current) {
+          headerRef.current.classList.add("show");
+        } else if (yPos > scrollPosition.current) {
+          headerRef.current.classList.remove("show");
+        }
+      }
+      
+      scrollPosition.current = yPos;
+    })
+  }, [])
 
   const handleNavButton = (e) => {
     e.preventDefault();
@@ -22,7 +48,7 @@ function Header() {
   }
 
   return (
-    <header>
+    <header ref={headerRef} className="show">
       <div className={"navbar" + (navOpen ? " navbar-toggled" : "")}>
         <div className={"navbar-logo" + (navOpen ? " navbar-toggled" : "")}>
           <Link 

@@ -226,6 +226,10 @@
   }
 
   .scroll-target {
-    scroll-margin-top: 4rem;
+    scroll-margin-top: 6rem;
+
+    @media (min-width: $bp-laptop) {
+      scroll-margin-top: 9.5rem;
+    }
   }
 }
