@@ -156,7 +156,7 @@ const PageProject = () => {
                   {otherProjectsData.map((project, id) => {
                     return (
                       <article
-                        className={`project-card animate ${id%2 === 0 ? "fade-in-right align-left" : "fade-in-left align-right" }`}
+                        className={`project-card animate .animation-delay-250 ${id%2 === 0 ? "fade-in-right align-left" : "fade-in-left align-right" }`}
                         // id={project.slug}
                         key={project.id}
                       >
