@@ -124,4 +124,13 @@
       }
     }
   }
+
+  .other-projects-section {
+    .project-card {
+
+      @media (min-width: $bp-laptop) {
+        display: block;
+      }
+    }
+  }
 }

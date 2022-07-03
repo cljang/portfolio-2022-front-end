@@ -27,7 +27,6 @@ function AppRouter() {
       }
     }
     fetchData()
-    console.log("Fetched Projects");
     
   }, [projectsPath, dispatch])
 

@@ -4,12 +4,12 @@ import { useParams, useNavigate } from "react-router-dom";
 import { appTitle } from "../global/globals";
 import { FaGithub, FaExternalLinkAlt as FaLink } from "react-icons/fa";
 import { BsGlobe } from "react-icons/bs"
+import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
 import Paragraph from "../components/Paragraph";
 import ResponsivePicture from "../components/ResponsivePicture";
 import ProjectFeature from "../components/ProjectFeature";
 import AnimationObserver from "../components/AnimationObserver";
-import ProjectCard from "../components/ProjectCard";
 
 const PageProject = () => {
   const { project_slug } = useParams();
@@ -30,7 +30,7 @@ const PageProject = () => {
   useEffect(() => {
     document.title = `${appTitle}`;
     window.scrollTo(0, 0);
-  }, [])
+  }, [project_slug])
 
   // Get the current projectData and otherProjectData
   useEffect(() => {
@@ -54,7 +54,6 @@ const PageProject = () => {
         setProjectData(thisProject)
         setOtherProjectsData(otherProjects.slice(0,2))
         setProjectLoadStatus(true)
-        document.title = `${thisProject.title.rendered} - ${appTitle}`;
       } else {
         navigate("/404");
       }
@@ -63,7 +62,7 @@ const PageProject = () => {
 
   return (
     <>
-      <section className="page page-project">
+      <section className={`page page-project ${isProjectLoaded ? `project-${projectData.slug}` : ""}`}>
         {isProjectLoaded ? 
           <>
             <header className="project-header">
@@ -150,15 +149,28 @@ const PageProject = () => {
               <h2>More Projects</h2>
               {otherProjectsData.map((project, id) => {
                 return (
-                  <ProjectCard
+                  <article 
+                    className={`project-card animate ${id%2 === 0 ? "fade-in-left align-left" : "fade-in-right align-right" }`}
+                    // id={project.slug}
                     key={project.id}
-                    project={project}
-                    className={`animate ${id%2 === 0 ? "fade-in-left align-left" : "fade-in-right align-right" }`}
-                  />
+                  >
+                    <Link to={`/projects/${project.slug}`} className="project-link">
+                      <ResponsivePicture 
+                        className="project-image"
+                        imageArray={project.acf.featured_image}
+                        alt={`${project.title.rendered} featured image`}
+                        limitSteps={2}
+                      />
+                      <div className="project-text">
+                        <h3 className="project-title">{project.title.rendered}</h3>
+                        <p className="project-subtitle">{project.acf.subtitle}</p>
+                      </div>
+                    </Link> 
+                  </article>
                 )
               })}
             </section>
-            <AnimationObserver />
+            <AnimationObserver id={project_slug}/>
           </>
         :
           <Loading />

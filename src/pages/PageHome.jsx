@@ -119,7 +119,7 @@ const PageHome = () => {
             </div>
             <p className={`email-copied-message ${showMessage ? "" : "hidden"}`}>Copied to Clipboard</p>
           </section>
-          <AnimationObserver />
+          <AnimationObserver id="home"/>
         </>
       :
         <Loading />
