@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import anime from "animejs/lib/anime.min.js";
 
-function AnimationObserver({children}) {
+function AnimationObserver({children, id}) {
 
   const animRef = useRef();
 
@@ -10,6 +10,15 @@ function AnimationObserver({children}) {
 
   // Anime.js object
   const animation = useRef(null);
+
+  // When id changes, reset all the previously animated elements
+  useEffect(() => {
+    const targetElements = animRef.current.querySelectorAll(`.animated`);
+    targetElements.forEach((element, index) => {
+      element.classList.remove("animated")
+      element.classList.add("animate")
+    })
+  }, [id])
 
   useEffect(() => {
     refs.current = [];
@@ -75,6 +84,8 @@ function AnimationObserver({children}) {
             easing: 'easeOutElastic(1, 0.8)',
           })
 
+          entry.target.classList.remove("animate")
+          entry.target.classList.add("animated")
           observer.unobserve(entry.target);
         }
       });

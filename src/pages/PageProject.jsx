@@ -65,7 +65,7 @@ const PageProject = () => {
       <section className={`page page-project ${isProjectLoaded ? `project-${projectData.slug}` : ""}`}>
         {isProjectLoaded ? 
           <>
-            <AnimationObserver>
+            <AnimationObserver id={project_slug}>
               <div className="content-wrapper">
                 <section className="project-header">
                   <div className="project-header-text animate fade-in-down">
