@@ -128,12 +128,22 @@ const PageProject = () => {
                       <section className="project-links-section">
                         <h3>View the Project</h3>
                         {projectData.acf.live_site &&
-                          <a href={projectData.acf.live_site} className="project-link">
+                          <a 
+                            href={projectData.acf.live_site} 
+                            className="project-link"
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                          >
                             <BsGlobe title="Live Site" className="link-icon live-site-icon" />
                           </a>
                         }
                         {projectData.acf.github_repo &&
-                          <a href={projectData.acf.github_repo} className="project-link">
+                          <a 
+                            href={projectData.acf.github_repo} 
+                            className="project-link"
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                          >
                             <FaGithub title="GitHub Repository" className="link-icon github-icon" />
                           </a>
                         }
@@ -157,7 +167,6 @@ const PageProject = () => {
                     return (
                       <article
                         className={`project-card animate .animation-delay-250 ${id%2 === 0 ? "fade-in-right align-left" : "fade-in-left align-right" }`}
-                        // id={project.slug}
                         key={project.id}
                       >
                         <Link to={`/projects/${project.slug}`} className="project-link">
