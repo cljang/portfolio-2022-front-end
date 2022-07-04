@@ -32,7 +32,7 @@ function AppRouter() {
   }, [projectsPath, dispatch])
 
   return (
-    <BrowserRouter basename="/">
+    <BrowserRouter>
       <Link to="#home" className="screen-reader-text">Skip to content</Link>
       <div className="site-wrapper">
         <Header />
