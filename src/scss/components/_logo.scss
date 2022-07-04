@@ -3,4 +3,8 @@
 .site-logo {
   fill: $yellow;
   vertical-align: middle;
+
+  .logo-face {
+    transform-origin: center;
+  }
 }
