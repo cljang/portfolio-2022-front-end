@@ -14,6 +14,7 @@ function Header() {
   const scrollPosition = useRef();
 
   useEffect(() => {
+    // Add scroll listener to show and hide header
     document.addEventListener('scroll', (e) => {
       const threshold = 200;
       const yPos = window.scrollY;
