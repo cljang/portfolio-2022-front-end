@@ -114,7 +114,12 @@ const PageProject = () => {
                           {projectData.acf.collaborators.map((collaborator, id) => {
                             return (
                               <li key={id}>
-                                <a href={collaborator.link} className="collaborator-link" >
+                                <a 
+                                  href={collaborator.link} 
+                                  className="collaborator-link" 
+                                  target="_blank" 
+                                  rel="noopener noreferrer"
+                                >
                                   {collaborator.name} <FaLink className="link-icon" aria-hidden />
                                 </a>
                               </li>
