@@ -42,15 +42,12 @@
       border: none;
       border-top: 0.125rem solid $background__blue;
       @include use-heading-style;
+      font-size: 1rem;
       display: flex; gap: 1rem;
       align-items: center;
 
       &:hover {
         color: $white;
-      }
-
-      svg {
-        display: block;
       }
     }
   }

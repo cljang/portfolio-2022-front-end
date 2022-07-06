@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux"
 import { useParams, useNavigate } from "react-router-dom";
 import { appTitle } from "../global/globals";
-import { FaGithub, FaExternalLinkAlt as FaLink } from "react-icons/fa";
-import { BsGlobe } from "react-icons/bs"
+import ExternalLink from "../components/icons/ExternalLink";
+import Github from "../components/icons/Github";
+import Globe from "../components/icons/Globe";
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
 import Paragraph from "../components/Paragraph";
@@ -121,7 +122,7 @@ const PageProject = () => {
                                   target="_blank" 
                                   rel="noopener noreferrer"
                                 >
-                                  {collaborator.name} <FaLink className="link-icon" aria-hidden />
+                                  {collaborator.name} <ExternalLink className="link-icon" aria-hidden />
                                 </a>
                               </li>
                             )
@@ -140,7 +141,7 @@ const PageProject = () => {
                             target="_blank" 
                             rel="noopener noreferrer"
                           >
-                            <BsGlobe title="Live Site" className="link-icon live-site-icon" />
+                            <Globe title="Live Site" className="link-icon live-site-icon" />
                           </a>
                         }
                         {projectData.acf.github_repo &&
@@ -150,7 +151,7 @@ const PageProject = () => {
                             target="_blank" 
                             rel="noopener noreferrer"
                           >
-                            <FaGithub title="GitHub Repository" className="link-icon github-icon" />
+                            <Github title="GitHub Repository" className="link-icon github-icon" />
                           </a>
                         }
                       </section>

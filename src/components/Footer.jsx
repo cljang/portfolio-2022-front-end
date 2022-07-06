@@ -1,5 +1,7 @@
 import Logo from "./Logo";
-import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import Envelope from "./icons/Envelope";
+import Github from "./icons/Github";
+import Linkedin from "./icons/Linkedin";
 
 function Footer() {
   return (
@@ -14,21 +16,21 @@ function Footer() {
             <a 
               href="mailto:clayton.jang@gmail.com"
             >
-              <FaEnvelope title="Email" />
+              <Envelope title="Email" />
             </a>
             <a 
               href="https://github.com/cljang/"
               target="_blank" 
               rel="noopener noreferrer"
             >
-              <FaGithub title="GitHub" />
+              <Github title="GitHub" />
             </a>
             <a 
               href="https://www.linkedin.com/in/clayton-jang/"
               target="_blank" 
               rel="noopener noreferrer"
             >
-              <FaLinkedin title="LinkedIn" />
+              <Linkedin title="LinkedIn" />
             </a>
           </div>
         </section>

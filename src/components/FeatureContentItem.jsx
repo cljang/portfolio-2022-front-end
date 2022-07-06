@@ -3,7 +3,8 @@ import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import codeTheme  from '../global/codeTheme';
 import Paragraph from './Paragraph';
 import ResponsivePicture from './ResponsivePicture';
-import {FaArrowDown, FaArrowUp} from "react-icons/fa"
+import ArrowUp from './icons/ArrowUp';
+import ArrowDown from './icons/ArrowDown';
 
 function FeatureContentItem({featureContentObj}) {
 
@@ -69,12 +70,12 @@ function FeatureContentItem({featureContentObj}) {
                 >
                   {codeOpen ? 
                     <>
-                      <FaArrowUp aria-hidden/> 
+                      <ArrowUp aria-hidden/> 
                       <span>Collapse Code</span>
                     </>
                   : 
                     <>
-                      <FaArrowDown aria-hidden />
+                      <ArrowDown aria-hidden />
                       <span>Expand Code</span>
                     </>
                   }
