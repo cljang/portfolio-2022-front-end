@@ -43,6 +43,7 @@ function FeatureContentItem({featureContentObj}) {
               className="image-content"
               imageArray={featureContentObj.image_sources}
               alt={featureContentObj.alt}
+              loading="lazy"
             />
           );
 

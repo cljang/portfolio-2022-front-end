@@ -14,6 +14,7 @@ function ProjectCard({project, className}) {
           imageArray={project.acf.featured_image}
           alt={`${project.title.rendered} featured image`}
           limitSteps={2}
+          loading="lazy"
         />
         <div className="project-text">
           <h3 className="project-title">{project.title.rendered}</h3>

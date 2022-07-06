@@ -1,8 +1,8 @@
 // Take an array of image objects from WordPress, assuming they are ordered from 
 
-function ResponsivePicture({imageArray, className, alt, limitSteps}) {
+function ResponsivePicture({imageArray, alt, limitSteps, loading, ...props}) { 
   return (
-    <picture className={className}>
+    <picture {...props}>
       {imageArray && imageArray.map((image, id) => {
         if (limitSteps && id < imageArray.length - limitSteps) {
           return null;
@@ -13,7 +13,8 @@ function ResponsivePicture({imageArray, className, alt, limitSteps}) {
             <img 
               key={id}
               src={image.url} 
-              alt={alt} 
+              alt={alt}
+              loading={loading}
             />
           )
         } else {
@@ -36,6 +37,7 @@ ResponsivePicture.defaultProps = {
   className: "",
   alt: "",
   limitSteps: false,
+  loading: null
 }
 
 export default ResponsivePicture

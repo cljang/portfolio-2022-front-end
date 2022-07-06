@@ -82,6 +82,7 @@ const PageProject = () => {
                   {projectData.acf.featured_image &&
                     <ResponsivePicture
                       className="featured-image animate fade-in-up animation-delay-500"
+                      haha="test"
                       imageArray={projectData.acf.featured_image}
                       alt={`${projectData.title.rendered} featured image`}
                     />
@@ -180,6 +181,7 @@ const PageProject = () => {
                             imageArray={project.acf.featured_image}
                             alt={`${project.title.rendered} featured image`}
                             limitSteps={2}
+                            loading="lazy"
                           />
                           <div className="project-text">
                             <h3 className="project-title">{project.title.rendered}</h3>
