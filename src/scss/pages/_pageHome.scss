@@ -86,7 +86,8 @@
     }
     
     @media (min-width: $bp-laptop) {
-      margin: 0 calc(calc(100% - 100vw)/2);
+      @include use-full-width;
+
       grid-template-areas: 
         ". . . ."
         ". text image ."
