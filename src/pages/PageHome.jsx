@@ -80,13 +80,17 @@ const PageHome = () => {
               <h2 className="screen-reader-text">Work</h2>
               {homePageData.acf.featured_projects.map((project_id, id) => {
                 const project = projectsData.find((project) => project.id === project_id);
-                return (
-                  <ProjectCard 
-                    key={project.id}
-                    project={project} 
-                    className={`animate  ${id%2 === 0 ? "fade-in-left align-left" : "fade-in-right align-right" }`}
-                  />
-                )
+                if (project) {
+                  return (
+                    <ProjectCard 
+                      key={project.id}
+                      project={project} 
+                      className={`animate  ${id%2 === 0 ? "fade-in-left align-left" : "fade-in-right align-right" }`}
+                    />
+                  )
+                } else {
+                  return(null)
+                }
               })}
             </section>
             <section id="about" className="section-about scroll-target animate fade-in-up">
