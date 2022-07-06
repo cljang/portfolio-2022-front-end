@@ -1,10 +1,23 @@
-
+import { useState, useRef, useEffect } from 'react';
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import codeTheme  from '../global/codeTheme';
 import Paragraph from './Paragraph';
 import ResponsivePicture from './ResponsivePicture';
 
 function ProjectFeature({featureObj, className}) {
+  
+  const overviewRef = useRef();
+  const [overviewStyle, setOverviewStyle] = useState();
+
+  // When the feature overview becomes sticky, make it stick such that it is vertically centered on the page 
+  useEffect(() => {
+    if (overviewRef.current) {
+      const height = overviewRef.current.clientHeight;
+      setOverviewStyle({
+        top: `calc(50% - ${height/2}px)`
+      })
+    }
+  }, [overviewRef])
 
   // Function to handle how different types of feature content is rendered
   const renderFeatureContent = (featureContentObj) => {
@@ -64,10 +77,16 @@ function ProjectFeature({featureObj, className}) {
     <>
       {featureObj && 
         <section className={`feature ${className}`}>
-          {(featureObj.heading || featureObj.description) && <div className="feature-overview">
-            {featureObj.heading && <h3 className="feature-heading">{featureObj.heading}</h3>}
-            {featureObj.description && <Paragraph text={featureObj.description}/>}
-          </div>}
+          {(featureObj.heading || featureObj.description) && 
+            <div 
+              className="feature-overview"
+              ref={overviewRef}
+              style={overviewStyle ? overviewStyle : {}}
+            >
+              {featureObj.heading && <h3 className="feature-heading">{featureObj.heading}</h3>}
+              {featureObj.description && <Paragraph text={featureObj.description}/>}
+            </div>
+          }
           {featureObj.content && <div className="feature-content">
             {featureObj.content.map((featureContentObj, id) => {
               return (
