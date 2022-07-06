@@ -4,7 +4,7 @@ import { appTitle, apiPath_pages } from "../global/globals";
 import Paragraph from "../components/Paragraph";
 import ProjectCard from "../components/ProjectCard";
 import Loading from "../components/Loading";
-import spaceman from "../images/spaceman-sketch.png";
+import spaceman from "../images/spaceman-sketch.webp";
 import AnimationObserver from "../components/AnimationObserver";
 
 const PageHome = () => {
