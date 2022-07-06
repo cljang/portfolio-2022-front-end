@@ -2,11 +2,57 @@
 @use "../global/mixins" as *;
 
 .feature-content-item {
+  > * {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+  } 
+
   .video-content {
     @include use-full-width;
+    border-radius: 0;
   
     @media (min-width: $bp-laptop) {
       @include disable-full-width;
+      border-radius: 1rem;
+    }
+  }
+
+  .code-content {
+    position: relative;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+
+    pre {
+      margin: 0;
+      padding: 1rem 1rem 4.5rem;
+    }
+
+    &.code-closed {
+      max-height: 20rem;
+    }
+
+    .code-button {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem;
+      background-color: $background__blue-dark;
+      color: $yellow;
+      border: none;
+      border-top: 0.125rem solid $background__blue;
+      @include use-heading-style;
+      display: flex; gap: 1rem;
+      align-items: center;
+
+      &:hover {
+        color: $white;
+      }
+
+      svg {
+        display: block;
+      }
     }
   }
 }

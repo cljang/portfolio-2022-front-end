@@ -35,8 +35,6 @@ export default {
       "hyphens": "none",
       "background": "#121A24",
       "color": "#FFFFFF",
-      "padding": "1em",
-      "margin": ".5em 0",
       "overflow": "auto"
   },
   "pre > code[class*=\"language-\"]": {
