@@ -14,7 +14,6 @@ function ResponsivePicture({imageArray, className, alt, limitSteps}) {
               key={id}
               src={image.url} 
               alt={alt} 
-              loading="lazy" 
             />
           )
         } else {
