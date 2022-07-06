@@ -18,7 +18,6 @@ function ProjectFeature({featureObj, className}) {
         const mediaQuery = window.matchMedia('(min-width: 56.25rem)')
   
         if (mediaQuery.matches) {
-          console.log("yes");
           const height = overviewRef.current.clientHeight;
           setOverviewStyle({
             top: `calc(50% - ${height/2}px)`

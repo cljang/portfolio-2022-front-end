@@ -15,7 +15,7 @@ function Header() {
 
   useEffect(() => {
     // Add scroll listener to show and hide header
-    document.addEventListener('scroll', (e) => {
+    const handleScroll = (e) => {
       const threshold = 200;
       const yPos = window.scrollY;
       
@@ -34,7 +34,13 @@ function Header() {
       }
       
       scrollPosition.current = yPos;
-    })
+    }
+    document.addEventListener('scroll', handleScroll);
+
+    return () => {
+      document.removeEventListener('scroll', handleScroll);
+    }
+    
   }, [])
 
   const handleNavButton = (e) => {
