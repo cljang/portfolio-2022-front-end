@@ -71,7 +71,8 @@
       @include use-full-width(8rem);
 
       @media (min-width: $max-width) {
-        @include disable-full-width;
+        @include disable-full-width(8rem);
+        @include use-round-corners;
       }
     }
   }

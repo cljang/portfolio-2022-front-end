@@ -4,8 +4,7 @@
 .feature-content-item {
   > * {
     position: relative;
-    overflow: hidden;
-    border-radius: 1rem;
+    @include use-round-corners;
   } 
 
   .video-content {
@@ -14,7 +13,7 @@
   
     @media (min-width: $bp-laptop) {
       @include disable-full-width;
-      border-radius: 1rem;
+      @include use-round-corners;
     }
   }
 

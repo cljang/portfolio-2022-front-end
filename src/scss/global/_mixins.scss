@@ -14,3 +14,8 @@
   margin: $vertical-padding 0;
   width: 100%;
 }
+
+@mixin use-round-corners($radius: 1rem) {
+  overflow: hidden;
+  border-radius: $radius;
+}
