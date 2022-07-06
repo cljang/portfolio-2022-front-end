@@ -1,0 +1,82 @@
+@use "../global/variables" as *;
+@use "../global/mixins" as *;
+
+.feature {
+  margin-bottom: 6rem;
+  
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .feature-overview {
+    margin-bottom: 2rem;
+  }
+
+  .feature-content {
+    &-item {
+      margin-bottom: 2rem;
+    
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+    }
+
+    .video-content {
+      @include use-full-width;
+
+      @media (min-width: $bp-laptop) {
+        @include disable-full-width;
+      }
+    
+    }
+  }
+
+  @media (min-width: $bp-laptop) {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2rem;
+    
+    .feature-overview {
+      position: sticky;
+      align-self: start;          
+      // top: 2rem;
+      // Set top dynamically based on height using js to center the feature overview sticky
+    }
+    
+    &.align-left {
+      grid-template-areas: "left left left left right right right right right right right right";
+
+      .feature-overview {
+        grid-area: left;
+      }
+
+      .feature-content {
+        grid-area: right;
+      }
+    }
+
+    &.align-right {
+      grid-template-areas: "left left left left left left left left right right right right";
+      
+      .feature-overview {
+        grid-area: right;
+        order: 1;
+      }
+
+      .feature-content {
+        grid-area: left;
+      }
+    }
+  }
+
+  @media (min-width: $bp-desktop-lg) {
+    &.align-left {
+      grid-template-areas: ". left left left right right right right right right right .";
+    }
+
+    &.align-right {
+      grid-template-areas: ". left left left left left left left right right right .";
+    }
+  }
+}

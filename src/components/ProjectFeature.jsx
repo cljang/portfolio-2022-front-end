@@ -12,10 +12,22 @@ function ProjectFeature({featureObj, className}) {
   // When the feature overview becomes sticky, make it stick such that it is vertically centered on the page 
   useEffect(() => {
     if (overviewRef.current) {
-      const height = overviewRef.current.clientHeight;
-      setOverviewStyle({
-        top: `calc(50% - ${height/2}px)`
-      })
+      // If the window matches the media query from css we can update the top parameter
+      // If smaller, than do nothing
+      const handleResize = () => {
+        const mediaQuery = window.matchMedia('(min-width: 56.25rem)')
+  
+        if (mediaQuery.matches) {
+          console.log("yes");
+          const height = overviewRef.current.clientHeight;
+          setOverviewStyle({
+            top: `calc(50% - ${height/2}px)`
+          })
+        }
+      }
+      window.addEventListener('resize', handleResize)
+
+      handleResize();
     }
   }, [overviewRef])
 
@@ -49,12 +61,6 @@ function ProjectFeature({featureObj, className}) {
             <div 
               className="code-content" 
             >
-              { featureContentObj.introduction && 
-                <div 
-                  className="code-introduction"
-                  dangerouslySetInnerHTML={{__html: featureContentObj.introduction}} 
-                />
-              }
               { featureContentObj.code && 
                 <SyntaxHighlighter 
                   language={featureContentObj.language} 
@@ -66,6 +72,17 @@ function ProjectFeature({featureObj, className}) {
               }
             </div>
           );
+
+        case "video_content":
+        return (
+          <div 
+            className="video-content" 
+          >
+            <video autoPlay muted loop>
+              <source src={featureContentObj.video.url} type={featureContentObj.video.mime_type} />
+            </video>
+          </div>
+        );
       
         default:
           break;

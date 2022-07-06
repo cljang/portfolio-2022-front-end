@@ -4,3 +4,23 @@
   font-family: $heading-font;
   font-weight: 700;
 }
+
+@mixin use-full-width($vertical-padding: 0) {
+  margin: $vertical-padding -2rem;
+  width: 100vw;
+
+
+  @media (min-width: $bp-laptop) {
+    margin: $vertical-padding calc(calc(100% - 100vw)/2);
+  }
+
+  @media (min-width: $max-width) {
+    margin: $vertical-padding 0;
+    width: 100%;
+  }
+}
+
+@mixin disable-full-width($vertical-padding: 0) {
+  margin: $vertical-padding 0;
+  width: 100%;
+}

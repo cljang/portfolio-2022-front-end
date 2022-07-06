@@ -68,17 +68,7 @@
     
     
     .featured-image {
-      margin: 8rem -2rem;
-      width: 100vw;
-
-      @media (min-width: $bp-laptop) {
-        margin: 10rem calc(calc(100% - 100vw)/2);
-      }
-
-      @media (min-width: $max-width) {
-        margin: 10rem 0;
-        width: 100%;
-      }
+      @include use-full-width(8rem);
     }
   }
 
@@ -148,73 +138,6 @@
     
     .project-features-header {
       text-align: center;
-    }
-    
-    .feature {
-      margin-bottom: 6rem;
-      
-      &:last-of-type {
-        margin-bottom: 0;
-      }
-
-      @media (min-width: $bp-laptop) {
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        gap: 2rem;
-        
-        .feature-overview {
-          position: sticky;
-          align-self: start;          
-          // top: 2rem;
-          // Set top dynamically based on height using js to center the feature overview sticky
-        }
-        
-        &.align-left {
-          grid-template-areas: "left left left left right right right right right right right right";
-
-          .feature-overview {
-            grid-area: left;
-          }
-    
-          .feature-content {
-            grid-area: right;
-          }
-        }
-    
-        &.align-right {
-          grid-template-areas: "left left left left left left left left right right right right";
-          
-          .feature-overview {
-            grid-area: right;
-            order: 1;
-          }
-    
-          .feature-content {
-            grid-area: left;
-          }
-        }
-      }
-
-      @media (min-width: $bp-desktop-lg) {
-        &.align-left {
-          grid-template-areas: ". left left left right right right right right right right .";
-        }
-    
-        &.align-right {
-          grid-template-areas: ". left left left left left left left right right right .";
-        }
-      }
-    }
-
-
-    .feature-content {
-      &-item {
-        margin-bottom: 2rem;
-      
-        &:last-of-type {
-          margin-bottom: 0;
-        }
-      }
     }
     
     .coming-soon {
