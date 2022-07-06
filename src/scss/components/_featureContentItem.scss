@@ -1,0 +1,12 @@
+@use "../global/variables" as *;
+@use "../global/mixins" as *;
+
+.feature-content-item {
+  .video-content {
+    @include use-full-width;
+  
+    @media (min-width: $bp-laptop) {
+      @include disable-full-width;
+    }
+  }
+}

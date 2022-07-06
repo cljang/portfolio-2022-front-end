@@ -19,16 +19,6 @@
       &:last-of-type {
         margin-bottom: 0;
       }
-
-    }
-
-    .video-content {
-      @include use-full-width;
-
-      @media (min-width: $bp-laptop) {
-        @include disable-full-width;
-      }
-    
     }
   }
 
