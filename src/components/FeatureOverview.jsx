@@ -4,6 +4,7 @@ import Paragraph from './Paragraph';
 function FeatureOverview({featureObj}) {
 
   const overviewRef = useRef();
+  const resizeTimeout = useRef();
   const [overviewStyle, setOverviewStyle] = useState();
 
   // When the feature overview becomes sticky, make it stick such that it is vertically centered on the page 
@@ -11,15 +12,20 @@ function FeatureOverview({featureObj}) {
     if (overviewRef.current) {
       // If the window matches the media query from css we can update the top parameter
       // If smaller, than do nothing
+      const mediaQuery = window.matchMedia('(min-width: 56.25rem)')
+
       const handleResize = () => {
-        const mediaQuery = window.matchMedia('(min-width: 56.25rem)')
+        clearTimeout(resizeTimeout.current)
   
-        if (mediaQuery.matches) {
-          const height = overviewRef.current.clientHeight;
-          setOverviewStyle({
-            top: `calc(50% - ${height/2}px)`
-          })
-        }
+        resizeTimeout.current = setTimeout(() => {
+          if (mediaQuery.matches) {
+            const height = overviewRef.current.clientHeight;
+            setOverviewStyle({
+              top: `calc(50% - ${height/2}px)`
+            })
+          }
+          console.log("change");
+        }, 200);
       }
       window.addEventListener('resize', handleResize)
 

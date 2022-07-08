@@ -2,6 +2,7 @@ import { HashLink as NavLink } from "react-router-hash-link"
 import { useSelector, useDispatch } from "react-redux"
 import { navMainLinks } from "../global/globals";
 import { closeNav } from "../features/navOpen/navOpenSlice"
+
 function NavMain({ reference }) {
 
   const navOpen = useSelector((state) => state.navOpen.value);

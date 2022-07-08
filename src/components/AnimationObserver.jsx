@@ -14,7 +14,7 @@ function AnimationObserver({children, id}) {
   // When id changes, reset all the previously animated elements
   useEffect(() => {
     const targetElements = animRef.current.querySelectorAll(`.animated`);
-    targetElements.forEach((element, index) => {
+    targetElements.forEach((element) => {
       element.classList.remove("animated")
       element.classList.add("animate")
     })
@@ -31,7 +31,6 @@ function AnimationObserver({children, id}) {
     })
 
     const options = {
-      // threshold: 0.3,
       rootMargin: "0px 0px -100px",
     }
     

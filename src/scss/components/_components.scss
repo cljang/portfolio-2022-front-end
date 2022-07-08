@@ -1,8 +1,10 @@
-@use "./header";
+@use "./animationObserver";
 
 @use "./logo";
 
 @use "./icons";
+
+@use "./loading";
 
 @use "./featureContentItem";
 
@@ -10,11 +12,6 @@
 
 @use "./projectCard";
 
-
-@use "./loading";
-
-@use "./textEffect";
-
-@use "./animationObserver";
+@use "./header";
 
 @use "./footer";

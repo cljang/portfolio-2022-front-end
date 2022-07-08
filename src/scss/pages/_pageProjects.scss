@@ -41,9 +41,7 @@
     }
   }
 
-  .project-header {
-    min-height: 100vh;
-    
+  .project-header {    
     .project-year {
       @include use-heading-style;
       font-size: 1.5rem;

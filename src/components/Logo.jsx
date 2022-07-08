@@ -2,20 +2,27 @@ import { useState, useEffect, useRef } from "react"
 
 function Logo() {
 
-  const [useFaceStyle, setUseFaceStyle] = useState(false);
   const [faceStyle, setFaceStyle] = useState({});
+  const isHovered = useRef(false);
   const logoRef = useRef()
 
   useEffect(() => {
     const handleMouseMove = (e) => {
-      const boundingBox = logoRef.current.getBoundingClientRect();
-      const xNormalized = (e.x - boundingBox.x)/(boundingBox.width/2) - 1;
-      const yNormalized = (e.y - boundingBox.y)/(boundingBox.height/2) - 1;
-      const factor = 8;
-      
-      setFaceStyle({
-        transform: `translate(${xNormalized*factor}%, ${yNormalized*factor}%) scaleX(${100 - Math.abs(xNormalized)*factor}%) scaleY(${100 - Math.abs(yNormalized)*factor}%)`
-      });
+      if (isHovered.current) {
+
+        requestAnimationFrame(() => {
+          const boundingBox = logoRef.current.getBoundingClientRect();
+          const xNormalized = (e.x - boundingBox.x)/(boundingBox.width/2) - 1;
+          const yNormalized = (e.y - boundingBox.y)/(boundingBox.height/2) - 1;
+          const factor = 8;
+          
+          setFaceStyle({
+            transform: `translate(${xNormalized*factor}%, ${yNormalized*factor}%) scaleX(${100 - Math.abs(xNormalized)*factor}%) scaleY(${100 - Math.abs(yNormalized)*factor}%)`
+          });
+
+          console.log("move");
+        })
+      }
     };
     window.addEventListener('mousemove', handleMouseMove)
 
@@ -25,11 +32,14 @@ function Logo() {
   }, [])
   
   const handleHover = () => {
-    setUseFaceStyle(true)
+    isHovered.current = true;
   }
   
   const stopHover = () => {
-    setUseFaceStyle(false);
+    isHovered.current = false;
+    requestAnimationFrame(() => {
+      setFaceStyle({});
+    })
   }
 
   return (
@@ -47,7 +57,7 @@ function Logo() {
       <defs></defs>
       <path className='logo-c' d="M183.53,354.71a88.89,88.89,0,0,1-77-88.09V253.39a96.89,96.89,0,0,1,96.89-96.89h57.15a8,8,0,0,0,7.52-5.27l21.47-59A8,8,0,0,0,282,81.5H198.74A167.25,167.25,0,0,0,31.5,248.74v22.53A159.28,159.28,0,0,0,160.23,427.58a8,8,0,0,0,9.11-5.12l20.77-57.06A8,8,0,0,0,183.53,354.71Z" transform="translate(-31.5 -81.5)"/>
       <path className='logo-j' d="M472.49,81.5H351.19a8,8,0,0,0-7.52,5.27l-21.47,59a8,8,0,0,0,7.52,10.75h67.77a8,8,0,0,1,8,8v94.1a96.89,96.89,0,0,1-96.89,96.89H251.46a8,8,0,0,0-7.52,5.27l-21.47,59A8,8,0,0,0,230,430.5h83.27A167.25,167.25,0,0,0,480.5,263.26V89.51A8,8,0,0,0,472.49,81.5Z" transform="translate(-31.5 -81.5)"/>
-      <g className="logo-face" style={useFaceStyle ? faceStyle : {}}>
+      <g className="logo-face" style={faceStyle}>
         <path className='logo-mouth' d="M256,321a42,42,0,0,0,40.64-31.37,8.5,8.5,0,0,0-16.43-4.38,25,25,0,0,1-48.42,0,8.5,8.5,0,0,0-16.43,4.38A42,42,0,0,0,256,321Z" transform="translate(-31.5 -81.5)"/>
         <circle className='logo-eye-right' cx="302.5" cy="159.5" r="27"/>
         <circle className='logo-eye-left' cx="147.5" cy="159.5" r="27"/>

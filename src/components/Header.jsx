@@ -19,21 +19,24 @@ function Header() {
       const threshold = 200;
       const yPos = window.scrollY;
       
-      if (yPos >= threshold) {
-        headerRef.current.classList.add("background");
-      } else {
-        headerRef.current.classList.remove("background");
-      }
-
-      if (scrollPosition.current) {
-        if (yPos < scrollPosition.current) {
-          headerRef.current.classList.add("show");
-        } else if (yPos > scrollPosition.current) {
-          headerRef.current.classList.remove("show");
+      requestAnimationFrame(() => {
+        if (yPos >= threshold) {
+          headerRef.current.classList.add("background");
+        } else {
+          headerRef.current.classList.remove("background");
         }
-      }
-      
-      scrollPosition.current = yPos;
+  
+        if (scrollPosition.current) {
+          if (yPos < scrollPosition.current) {
+            headerRef.current.classList.add("show");
+          } else if (yPos > scrollPosition.current) {
+            headerRef.current.classList.remove("show");
+          }
+        }
+        
+        scrollPosition.current = yPos;
+
+      })
     }
     document.addEventListener('scroll', handleScroll);
 
