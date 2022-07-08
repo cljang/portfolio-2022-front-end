@@ -23,7 +23,7 @@ main {
   flex-grow: 1;
   display: grid;
   grid-template-areas: ". content .";
-  grid-template-columns: minmax(2rem, 1fr) minmax(0, $max-width) minmax(2rem, 1fr);
+  grid-template-columns: minmax($site-side-padding, 1fr) minmax(0, $max-width) minmax($site-side-padding, 1fr);
 
   section.page {
     grid-column: content;

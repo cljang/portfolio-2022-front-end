@@ -6,9 +6,8 @@
   margin: 0;
 
   .section-banner {
-    width: 100vw;
+    @include use-full-width;
     min-height: min(100vh, 75rem);
-    margin: 0 -2rem;
     background-image: url("../../images/space-bg.svg");
     background-size: cover;
     background-position: center;
@@ -20,7 +19,7 @@
       ". . ."
     ;
     grid-template-rows: minmax(8rem, 1fr) auto auto minmax(8rem, 1fr);
-    grid-template-columns: minmax(2rem, 1fr) minmax(0, $max-width) minmax(2rem, 1fr);
+    grid-template-columns: minmax($site-side-padding, 1fr) minmax(0, $max-width) minmax($site-side-padding, 1fr);
 
     .banner-text {
       grid-area: text;
@@ -94,7 +93,7 @@
         ". . . ."
       ;
       grid-template-rows: minmax(8rem, 1fr) auto minmax(8rem, 1fr);
-      grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, calc($max-width/2))) minmax(2rem, 1fr);
+      grid-template-columns: minmax($site-side-padding, 1fr) repeat(2, minmax(0, calc($max-width/2))) minmax($site-side-padding, 1fr);
     }
   }
 
