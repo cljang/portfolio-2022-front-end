@@ -127,11 +127,19 @@
 
   .project-links-section {
     .project-link {
-      padding: 1rem;
-      font-size: 2rem;
+      padding: 1rem 0;
+      display: grid;
+      grid-template-columns: 3rem 1fr;
+      gap: 0.5rem;
+      line-height: 1;
+      align-items: center;
+
+      .custom-icon {
+        font-size: 2rem;
+      }
 
       &:first-of-type {
-        padding-left: 0;
+        padding-top: 0;
       }
     }
   }

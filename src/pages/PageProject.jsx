@@ -3,14 +3,13 @@ import { useSelector } from "react-redux"
 import { useParams, useNavigate } from "react-router-dom";
 import { appTitle } from "../global/globals";
 import ExternalLink from "../components/icons/ExternalLink";
-import Github from "../components/icons/Github";
-import Globe from "../components/icons/Globe";
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
 import Paragraph from "../components/Paragraph";
 import ResponsivePicture from "../components/ResponsivePicture";
 import ProjectFeature from "../components/ProjectFeature";
 import AnimationObserver from "../components/AnimationObserver";
+import ProjectLink from "../components/ProjectLink";
 
 const PageProject = () => {
   const { project_slug } = useParams();
@@ -134,25 +133,12 @@ const PageProject = () => {
                       (projectData.acf.live_site || projectData.acf.github_repo) &&
                       <section className="project-links-section">
                         <h3>View the Project</h3>
-                        {projectData.acf.live_site &&
-                          <a 
-                            href={projectData.acf.live_site} 
-                            className="project-link"
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                          >
-                            <Globe title="Live Site" className="link-icon live-site-icon" />
-                          </a>
-                        }
-                        {projectData.acf.github_repo &&
-                          <a 
-                            href={projectData.acf.github_repo} 
-                            className="project-link"
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                          >
-                            <Github title="GitHub Repository" className="link-icon github-icon" />
-                          </a>
+                        {projectData.acf.project_links &&
+                          projectData.acf.project_links.map((link, id) => {
+                            return (
+                              <ProjectLink key={id} link={link}/>
+                            )
+                          })
                         }
                       </section>
                     }
