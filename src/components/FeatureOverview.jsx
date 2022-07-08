@@ -24,7 +24,6 @@ function FeatureOverview({featureObj}) {
               top: `calc(50% - ${height/2}px)`
             })
           }
-          console.log("change");
         }, 200);
       }
       window.addEventListener('resize', handleResize)
