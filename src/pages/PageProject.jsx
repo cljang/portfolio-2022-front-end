@@ -130,7 +130,7 @@ const PageProject = () => {
                       </section>
                     }
                     {
-                      (projectData.acf.live_site || projectData.acf.github_repo) &&
+                      (projectData.acf.project_links) &&
                       <section className="project-links-section">
                         <h3>View the Project</h3>
                         {projectData.acf.project_links &&
