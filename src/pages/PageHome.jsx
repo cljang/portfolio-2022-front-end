@@ -57,7 +57,6 @@ const PageHome = () => {
     setShowMessage(true)
     clearTimeout(timeout.current)
     timeout.current = setTimeout(() => {
-      console.log("clicked");
       setShowMessage(false);
     }, 2000)
   } 

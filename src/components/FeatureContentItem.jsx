@@ -7,19 +7,24 @@ import ArrowUp from './icons/ArrowUp';
 import ArrowDown from './icons/ArrowDown';
 
 function FeatureContentItem({featureContentObj}) {
-
-  console.log(featureContentObj);
   // Allow large code to be collapsed down
   const [codeOpen, setCodeOpen] = useState(false)
   const featureRef = useRef();
+  const contentRef = useRef();
 
   const handleCodeButton = (e) => {
     e.preventDefault();
 
     if (codeOpen) {
-      featureRef.current.style.maxHeight = null;
+      const handleScrollUp = async () => {
+        await featureRef.current.scrollIntoView({behavior: "smooth"})
+        contentRef.current.style.maxHeight = null;
+
+      }
+      handleScrollUp()
+      console.log(e.target.getClientRects());
     } else {
-      featureRef.current.style.maxHeight = `${featureRef.current.scrollHeight}px`;
+      contentRef.current.style.maxHeight = `${contentRef.current.scrollHeight}px`;
     }
     setCodeOpen(!codeOpen);
   }
@@ -52,7 +57,7 @@ function FeatureContentItem({featureContentObj}) {
           return (
             <div 
               className={`code-content ${codeOpen ? "code-open" : "code-closed"}`} 
-              ref={featureRef}
+              ref={contentRef}
             >
               { featureContentObj.code && 
               <>
@@ -106,6 +111,7 @@ function FeatureContentItem({featureContentObj}) {
       {featureContentObj.caption ? 
         <figure
           className="feature-content-item"
+          ref={featureRef}
         >
           {featureContentObj && renderFeatureContent(featureContentObj)}
           <figcaption>{featureContentObj.caption}</figcaption>
@@ -113,6 +119,7 @@ function FeatureContentItem({featureContentObj}) {
       :
         <div
           className="feature-content-item"
+          ref={featureRef}
         >
           {featureContentObj && renderFeatureContent(featureContentObj)}
         </div>
