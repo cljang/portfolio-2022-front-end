@@ -43,7 +43,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(rgba($background__blue-dark, 0), black);
+      background: linear-gradient(rgba($background__blue-dark, 0), $black);
       height: 7rem;
       opacity: 0;
       visibility: hidden;
