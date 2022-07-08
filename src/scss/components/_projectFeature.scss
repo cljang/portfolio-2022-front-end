@@ -2,19 +2,19 @@
 @use "../global/mixins" as *;
 
 .feature {
-  margin-bottom: 6rem;
+  margin-bottom: 8rem;
   
   &:last-of-type {
     margin-bottom: 0;
   }
 
   .feature-overview {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 
   .feature-content {
     &-item {
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
     
       &:last-of-type {
         margin-bottom: 0;
@@ -25,12 +25,11 @@
   @media (min-width: $bp-laptop) {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    gap: 2rem;
+    gap: 1rem;
     
     .feature-overview {
       position: sticky;
-      align-self: start;          
-      // top: 2rem;
+      align-self: start;
       // Set top dynamically based on height using js to center the feature overview sticky
     }
     
