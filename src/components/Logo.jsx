@@ -19,8 +19,6 @@ function Logo() {
           setFaceStyle({
             transform: `translate(${xNormalized*factor}%, ${yNormalized*factor}%) scaleX(${100 - Math.abs(xNormalized)*factor}%) scaleY(${100 - Math.abs(yNormalized)*factor}%)`
           });
-
-          console.log("move");
         })
       }
     };
