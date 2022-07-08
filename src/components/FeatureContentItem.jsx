@@ -16,13 +16,8 @@ function FeatureContentItem({featureContentObj}) {
     e.preventDefault();
 
     if (codeOpen) {
-      const handleScrollUp = async () => {
-        await featureRef.current.scrollIntoView({behavior: "smooth"})
-        contentRef.current.style.maxHeight = null;
-
-      }
-      handleScrollUp()
-      console.log(e.target.getClientRects());
+      featureRef.current.scrollIntoView({behavior: "smooth"})
+      contentRef.current.style.maxHeight = null;
     } else {
       contentRef.current.style.maxHeight = `${contentRef.current.scrollHeight}px`;
     }
@@ -68,19 +63,18 @@ function FeatureContentItem({featureContentObj}) {
                 >
                   {featureContentObj.code}
                 </SyntaxHighlighter>
+                <div className='code-fog'></div>
                 <button
                   className='code-button'
                   onClick={handleCodeButton}
                 >
                   {codeOpen ? 
                     <>
-                      <ArrowUp aria-hidden/> 
-                      <span>Collapse Code</span>
+                      <ArrowUp aria-hidden/> <span>Collapse Code</span>
                     </>
                   : 
                     <>
-                      <ArrowDown aria-hidden />
-                      <span>Expand Code</span>
+                      <ArrowDown aria-hidden /> <span>Expand Code</span>
                     </>
                   }
                 </button>
