@@ -8,6 +8,7 @@ import ArrowDown from './icons/ArrowDown';
 
 function FeatureContentItem({featureContentObj}) {
 
+  console.log(featureContentObj);
   // Allow large code to be collapsed down
   const [codeOpen, setCodeOpen] = useState(false)
   const featureRef = useRef();
@@ -25,7 +26,6 @@ function FeatureContentItem({featureContentObj}) {
 
   // Function to handle how different types of feature content is rendered
   const renderFeatureContent = (featureContentObj) => {
-    // Ensure featureContentObj is defined
     if (featureContentObj) {
       // featureContentObj is a WordPress ACF Pro Flexible Content (FC) block, where the type of content is defined using the acf_fc_layout parameter
       switch (featureContentObj.acf_fc_layout) {
@@ -44,7 +44,6 @@ function FeatureContentItem({featureContentObj}) {
               className="image-content"
               imageArray={featureContentObj.image_sources}
               alt={featureContentObj.alt}
-              loading="lazy"
             />
           );
 
@@ -103,11 +102,22 @@ function FeatureContentItem({featureContentObj}) {
   }
 
   return (
-    <div
-      className="feature-content-item"
-    >
-      {featureContentObj && renderFeatureContent(featureContentObj)}
-    </div>
+    <>
+      {featureContentObj.caption ? 
+        <figure
+          className="feature-content-item"
+        >
+          {featureContentObj && renderFeatureContent(featureContentObj)}
+          <figcaption>{featureContentObj.caption}</figcaption>
+        </figure>
+      :
+        <div
+          className="feature-content-item"
+        >
+          {featureContentObj && renderFeatureContent(featureContentObj)}
+        </div>
+      } 
+    </>
   )
 }
 
