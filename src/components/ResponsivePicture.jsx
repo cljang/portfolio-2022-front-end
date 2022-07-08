@@ -14,6 +14,8 @@ function ResponsivePicture({imageArray, alt, limitSteps, loading, ...props}) {
               key={id}
               src={image.url} 
               alt={alt}
+              width={image.width}
+              height={image.height}
               loading={loading}
             />
           )
@@ -25,6 +27,8 @@ function ResponsivePicture({imageArray, alt, limitSteps, loading, ...props}) {
               media={`(min-width: ${nextImage.width}px)`} 
               srcSet={image.url} 
               type={image.mime_type ? image.mime_type : ""} 
+              width={image.width}
+              height={image.height}
             />
           )
         }

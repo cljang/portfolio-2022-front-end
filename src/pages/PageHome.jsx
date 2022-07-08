@@ -72,7 +72,7 @@ const PageHome = () => {
                 <p className="banner-subtitle">{homePageData.acf.page_subtitle}</p>
               </div>
               <div className="banner-image animate fade-in-up fade-in-left animation-delay-500">
-                <img src={spaceman} alt="Spaceman illustration" />
+                <img src={spaceman} alt="Spaceman illustration" width={800} height={959} fetchpriority="high" />
               </div>
             </section>
             <section id="work" className="section-work scroll-target">

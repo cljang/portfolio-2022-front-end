@@ -89,7 +89,12 @@ function FeatureContentItem({featureContentObj}) {
             className="video-content" 
           >
             <video autoPlay muted loop>
-              <source src={featureContentObj.video.url} type={featureContentObj.video.mime_type} />
+              <source 
+                src={featureContentObj.video.url} 
+                type={featureContentObj.video.mime_type} 
+                width={featureContentObj.video.width}
+                height={featureContentObj.video.height}
+              />
             </video>
           </div>
         );
