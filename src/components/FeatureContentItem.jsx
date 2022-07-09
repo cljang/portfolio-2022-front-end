@@ -60,6 +60,7 @@ function FeatureContentItem({featureContentObj}) {
                   language={featureContentObj.language} 
                   style={codeTheme}
                   showLineNumbers={true}
+                  wrapLines={true}
                 >
                   {featureContentObj.code}
                 </SyntaxHighlighter>

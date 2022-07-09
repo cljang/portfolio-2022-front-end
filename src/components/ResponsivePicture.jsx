@@ -1,8 +1,8 @@
 // Take an array of image objects from WordPress, assuming they are ordered from 
 
-function ResponsivePicture({imageArray, alt, limitSteps, loading, ...props}) { 
+function ResponsivePicture({imageArray, alt, limitSteps, loading, className, ...props}) { 
   return (
-    <picture {...props}>
+    <picture className={`responsive-picture ${className}`} {...props}>
       {imageArray && imageArray.map((image, id) => {
         if (limitSteps && id < imageArray.length - limitSteps) {
           return null;

@@ -27,6 +27,13 @@
     pre {
       margin: 0;
       padding: 1rem 1rem 4.5rem;
+
+      @media (min-width: $bp-laptop) {
+        code > span {
+          display: flex;
+          flex-wrap: wrap;
+        }
+      }
     }
 
     &.code-closed {
@@ -55,6 +62,7 @@
       bottom: 0;
       left: 0;
       right: 0;
+      width: 100%;
       padding: 1rem;
       background-color: $background__blue-dark;
       color: $yellow;
