@@ -96,11 +96,11 @@
     align-items: center;
     
     .project-text {
-      grid-column: text;
+      grid-area: text;
     }
     
     .project-image {
-      grid-column: thumbnail;
+      grid-area: thumbnail;
       @include disable-full-width;
       @include use-round-corners;
     }
@@ -110,14 +110,6 @@
       grid-template-areas: 
         "text . thumbnail"
       ;
-      
-      .project-image {
-        order: 1;
-      }
-
-      .project-text {
-        order: 0;
-      }
     }
     
     &.align-right {
@@ -125,14 +117,6 @@
       grid-template-areas: 
         "thumbnail . text"
       ;
-
-      .project-image {
-        order: 0;
-      }
-
-      .project-text {
-        order: 1;
-      }
     }
   }
 }

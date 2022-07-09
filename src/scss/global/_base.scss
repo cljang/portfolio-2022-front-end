@@ -26,7 +26,7 @@ main {
   grid-template-columns: minmax($site-side-padding, 1fr) minmax(0, $max-width) minmax($site-side-padding, 1fr);
 
   section.page {
-    grid-column: content;
+    grid-area: content;
   }
 }
 
