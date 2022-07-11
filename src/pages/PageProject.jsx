@@ -148,7 +148,8 @@ const PageProject = () => {
                   <h2 className="project-features-header animate fade-in-right">Features</h2>
                   {projectData.acf.features ? 
                     projectData.acf.features.map((featureObj,id) => {
-                      return <ProjectFeature key={id} featureObj={featureObj} className={`animate ${id%2 === 0 ? "align-left fade-in-right" : "align-right fade-in-left"}`} />
+                      const featureSlug = featureObj.heading.toLowerCase().match(/[a-zA-Z ]/).join("").replace(" ","_");
+                      return <ProjectFeature key={featureSlug} featureObj={featureObj} className={`animate ${id%2 === 0 ? "align-left fade-in-right" : "align-right fade-in-left"}`} />
                     }) 
                   : 
                     <p className="coming-soon animate fade-in-up">Coming soon.</p>
