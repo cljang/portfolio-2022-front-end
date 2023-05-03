@@ -1,4 +1,3 @@
-
 // Base Page Styles
 @use "./pageBase";
 
@@ -7,6 +6,9 @@
 
 // Projects Page Styles
 @use "./pageProjects";
+
+// Maintenance Page Styles
+@use "./pageMaintenance";
 
 // 404 Page Styles
 @use "./page404";

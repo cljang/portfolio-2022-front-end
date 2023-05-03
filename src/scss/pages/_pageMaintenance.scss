@@ -1,0 +1,13 @@
+@use "../global/variables" as *;
+@use "../global/mixins" as *;
+
+.page-maintenance {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  .page-content {
+    max-width: 30rem;
+  }
+}
